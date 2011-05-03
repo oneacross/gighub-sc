@@ -22,7 +22,7 @@ Gighub.Band.FIXTURES = [
 
     {
         guid: 3,
-        name: "30 Seconds to Mars"
+        name: "30 Seconds to Mars",
         location: "Los Angeles, CA"
     }
 
