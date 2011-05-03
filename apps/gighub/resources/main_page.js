@@ -36,12 +36,23 @@ Gighub.mainPage = SC.Page.design({
         layout: { top: 36, bottom: 32, left: 0, right: 0 },
         backgroundColor: 'white',
         contentView: SC.ListView.design({
+            contentBinding: "Gighub.bandsController.arrangedObjects",
+            selectionBinding: "Gighub.bandsController.selection",
+            contentValueKey: "name",
+            rowHeight: 40
         })
     }),
     
     bottomView: SC.ToolbarView.design({
         layout: { bottom: 0, left: 0, right: 0, height: 32 },
-        anchorLocation: SC.ANCHOR_BOTTOM
+        childViews: 'summaryView'.w(),
+        anchorLocation: SC.ANCHOR_BOTTOM,
+
+        summaryView: SC.LabelView.design({
+            layout: { centerY: 0, height: 18, left: 20, right: 20 },
+            textAlign: SC.ALIGN_CENTER,
+            valueBinding: "Gighub.bandsController.summary"
+        })
     })
   })
 

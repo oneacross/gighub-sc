@@ -22,9 +22,9 @@ Gighub.main = function main() {
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
 
-  // TODO: Set the content property on your primary controller
-  // ex: Gighub.contactsController.set('content',Gighub.contacts);
+  var bands = Gighub.store.find(Gighub.Band);
+  Gighub.bandsController.set('content', bands);
 
-} ;
+};
 
 function main() { Gighub.main(); }
