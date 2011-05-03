@@ -27,7 +27,7 @@ Gighub.mainPage = SC.Page.design({
 
         addButton: SC.ButtonView.design({
             layout: { centerY: 0, height: 24, right: 12, width: 100 },
-            title: "Add Band"
+            title: "Login"
         })
     }),
 
