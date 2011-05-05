@@ -16,6 +16,6 @@ Gighub.Band = SC.Record.extend(
 
     name: SC.Record.attr(String),
     location: SC.Record.attr(String),
-    logo: SC.Record.attr(String)
+    picture: SC.Record.attr(String)
 
 }) ;

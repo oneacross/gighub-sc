@@ -38,8 +38,8 @@ Gighub.mainPage = SC.Page.design({
         contentView: SC.ListView.design({
             contentBinding: "Gighub.bandsController.arrangedObjects",
             selectionBinding: "Gighub.bandsController.selection",
-            contentValueKey: "name",
-            rowHeight: 40
+            exampleView: Gighub.BandViewMini,
+            rowHeight: 100
         })
     }),
     
