@@ -17,7 +17,7 @@ Gighub.main = function main() {
   // The default code here will make the mainPane for your application visible
   // on screen.  If you app gets any level of complexity, you will probably 
   // create multiple pages and panes.  
-  Gighub.getPath('mainPage.mainPane').append() ;
+  Gighub.getPath('mainPage.mainPane').append();
 
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
@@ -25,6 +25,8 @@ Gighub.main = function main() {
   var bands = Gighub.store.find(Gighub.Band);
   Gighub.bandsController.set('content', bands);
 
+  // setup a route to show a band page
+  SC.routes.add('bands/show/:id', Gighub.bandsController.show);
 };
 
 function main() { Gighub.main(); }

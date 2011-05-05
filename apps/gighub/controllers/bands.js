@@ -23,6 +23,19 @@ Gighub.bandsController = SC.ArrayController.create(
             ret = "No bands";
         }
         return ret;
-    }.property('length').cacheable()
+    }.property('length').cacheable(),
+
+    showOne: function(arg) {
+        // get the band from the id and render the page
+        Gighub.getPath('mainPage.mainPane').remove();
+        Gighub.getPath('bandPage.mainPane').append();
+        SC.routes.set('location', 'bands/show/1');
+    },
+
+    showAll: function(arg) {
+        Gighub.getPath('bandPage.mainPane').remove();
+        Gighub.getPath('mainPage.mainPane').append();
+        SC.routes.set('location', 'bands');
+    }
 
 }) ;

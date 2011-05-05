@@ -5,7 +5,7 @@
 /*globals Gighub */
 
 // This page describes the main user interface for your application.  
-Gighub.mainPage = SC.Page.design({
+Gighub.bandPage = SC.Page.design({
 
   // The main pane is made visible on screen as soon as your app is loaded.
   // Add childViews to this pane for views to display immediately on page 
@@ -27,9 +27,9 @@ Gighub.mainPage = SC.Page.design({
 
         switchPage: SC.ButtonView.design({
             layout: { centerY: 0, height: 24, right: 150, width: 100 },
-            title: "Switch Page",
+            title: "Back To Main",
             target: 'Gighub.bandsController',
-            action: 'showOne'
+            action: 'showAll'
         }),
 
         addButton: SC.ButtonView.design({
@@ -38,16 +38,10 @@ Gighub.mainPage = SC.Page.design({
         })
     }),
 
-    middleView: SC.ScrollView.design({
+    middleView: SC.LabelView.design({
         hasHorizontalScroller: NO,
         layout: { top: 36, bottom: 32, left: 0, right: 0 },
-        backgroundColor: 'white',
-        contentView: SC.ListView.design({
-            contentBinding: "Gighub.bandsController.arrangedObjects",
-            selectionBinding: "Gighub.bandsController.selection",
-            exampleView: Gighub.BandViewMini,
-            rowHeight: 100
-        })
+        value: "Hello Mew!"
     }),
     
     bottomView: SC.ToolbarView.design({
