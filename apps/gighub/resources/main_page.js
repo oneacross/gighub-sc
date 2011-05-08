@@ -33,23 +33,22 @@ Gighub.mainPage = SC.Page.design({
 
     middleView: SC.View.design({
         layout: { top: 36, bottom: 0, left: 0, right: 0 },
-        render: function(context, firstTime) {
-            context = context.begin('h1')
-                .push('Welcome to GigHub!').end();
-            context = context.begin('a')
-                .attr('href', 'http://www.npr.org')
-                .push('the bands').end()
-                .push('<br/>');
-            context = context.begin('a')
-                .attr('href', 'http://www.npr.org')
-                .push('the venues').end()
-                .push('<br/>');
-            context = context.begin('a')
-                .attr('href', 'http://www.npr.org')
-                .push('the listeners').end()
-                .push('<br/>');
-            sc_super();
-        }
+        childViews: 'bandsButton venuesButton listenersButton'.w(),
+
+        bandsButton: SC.ButtonView.design({
+            layout: { centerX: 0, top: 80, height: 36, width: 200 },
+            title: 'the bands'
+        }),
+
+        venuesButton: SC.ButtonView.design({
+            layout: { centerX: 0, top: 120, height: 36, width: 200 },
+            title: 'the venues'
+        }),
+
+        listenersButton: SC.ButtonView.design({
+            layout: { centerX: 0, top: 160, height: 36, width: 200 },
+            title: 'the listeners'
+        })
     })
 
   })
