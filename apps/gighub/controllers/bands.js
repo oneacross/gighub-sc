@@ -32,10 +32,12 @@ Gighub.bandsController = SC.ArrayController.create(
         SC.routes.set('location', 'bands/show/1');
     },
 
-    showAll: function(arg) {
-        Gighub.getPath('bandPage.mainPane').remove();
-        Gighub.getPath('mainPage.mainPane').append();
-        SC.routes.set('location', 'bands');
+    show_all: function(arg) {
+        var page = Gighub.getPath('mainPage.mainPane');
+        page.remove();
+        page = Gighub.getPath('bandsPage.mainPane').append();
+        page.append();
+        //SC.routes.set('location', 'bands');
     }
 
 }) ;
