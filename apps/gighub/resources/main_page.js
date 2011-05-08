@@ -11,11 +11,11 @@ Gighub.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'middleView topView bottomView'.w(),
+    childViews: 'middleView topView'.w(),
 
     topView: SC.ToolbarView.design({
         layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView switchPage addButton'.w(),
+        childViews: 'labelView addButton'.w(),
         anchorLocation: SC.ANCHOR_TOP,
 
         labelView: SC.LabelView.design({
@@ -25,42 +25,33 @@ Gighub.mainPage = SC.Page.design({
             value: 'gighub'
         }),
 
-        switchPage: SC.ButtonView.design({
-            layout: { centerY: 0, height: 24, right: 150, width: 100 },
-            title: "Switch Page",
-            target: 'Gighub.bandsController',
-            action: 'showOne'
-        }),
-
         addButton: SC.ButtonView.design({
             layout: { centerY: 0, height: 24, right: 12, width: 100 },
             title: "Login"
         })
     }),
 
-    middleView: SC.ScrollView.design({
-        hasHorizontalScroller: NO,
-        layout: { top: 36, bottom: 32, left: 0, right: 0 },
-        backgroundColor: 'white',
-        contentView: SC.ListView.design({
-            contentBinding: "Gighub.bandsController.arrangedObjects",
-            selectionBinding: "Gighub.bandsController.selection",
-            exampleView: Gighub.BandViewMini,
-            rowHeight: 100
-        })
-    }),
-    
-    bottomView: SC.ToolbarView.design({
-        layout: { bottom: 0, left: 0, right: 0, height: 32 },
-        childViews: 'summaryView'.w(),
-        anchorLocation: SC.ANCHOR_BOTTOM,
-
-        summaryView: SC.LabelView.design({
-            layout: { centerY: 0, height: 18, left: 20, right: 20 },
-            textAlign: SC.ALIGN_CENTER,
-            valueBinding: "Gighub.bandsController.summary"
-        })
+    middleView: SC.View.design({
+        layout: { top: 36, bottom: 0, left: 0, right: 0 },
+        render: function(context, firstTime) {
+            context = context.begin('h1')
+                .push('Welcome to GigHub!').end();
+            context = context.begin('a')
+                .attr('href', 'http://www.npr.org')
+                .push('the bands').end()
+                .push('<br/>');
+            context = context.begin('a')
+                .attr('href', 'http://www.npr.org')
+                .push('the venues').end()
+                .push('<br/>');
+            context = context.begin('a')
+                .attr('href', 'http://www.npr.org')
+                .push('the listeners').end()
+                .push('<br/>');
+            sc_super();
+        }
     })
+
   })
 
 });
