@@ -64,11 +64,11 @@ Gighub.bandsPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'middleView topView bottomView'.w(),
+    childViews: 'middleView topView'.w(),
 
     topView: SC.ToolbarView.design({
         layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView switchPage addButton'.w(),
+        childViews: 'labelView addButton'.w(),
         anchorLocation: SC.ANCHOR_TOP,
 
         labelView: SC.LabelView.design({
@@ -76,13 +76,6 @@ Gighub.bandsPage = SC.Page.design({
             controlSize: SC.LARGE_CONTROL_SIZE,
             fontWeight: SC.BOLD_WEIGHT,
             value: 'gighub'
-        }),
-
-        switchPage: SC.ButtonView.design({
-            layout: { centerY: 0, height: 24, right: 150, width: 100 },
-            title: "Switch Page",
-            target: 'Gighub.bandsController',
-            action: 'showOne'
         }),
 
         addButton: SC.ButtonView.design({
@@ -100,18 +93,49 @@ Gighub.bandsPage = SC.Page.design({
             exampleView: Gighub.BandViewMini,
             rowHeight: 100
         })
+    })
+
+  })
+
+});
+
+// This page shows one band
+Gighub.bandPage = SC.Page.design({
+
+  // The main pane is made visible on screen as soon as your app is loaded.
+  // Add childViews to this pane for views to display immediately on page 
+  // load.
+  mainPane: SC.MainPane.design({
+    childViews: 'middleView topView'.w(),
+
+    topView: SC.ToolbarView.design({
+        layout: { top: 0, left: 0, right: 0, height: 36 },
+        childViews: 'labelView bandsButton addButton'.w(),
+        anchorLocation: SC.ANCHOR_TOP,
+
+        labelView: SC.LabelView.design({
+            layout: { centerY: 0, height: 24, left: 8, width: 200 },
+            controlSize: SC.LARGE_CONTROL_SIZE,
+            fontWeight: SC.BOLD_WEIGHT,
+            value: 'gighub'
+        }),
+
+        bandsButton: SC.ButtonView.design({
+            layout: { centerY: 0, height: 24, right: 200, width: 100 },
+            title: 'the bands',
+            action: 'show_all',
+            target: 'Gighub.bandsController'
+        }),
+
+        addButton: SC.ButtonView.design({
+            layout: { centerY: 0, height: 24, right: 12, width: 100 },
+            title: "Login"
+        })
     }),
 
-    bottomView: SC.ToolbarView.design({
-        layout: { bottom: 0, left: 0, right: 0, height: 32 },
-        childViews: 'summaryView'.w(),
-        anchorLocation: SC.ANCHOR_BOTTOM,
-
-        summaryView: SC.LabelView.design({
-            layout: { centerY: 0, height: 18, left: 20, right: 20 },
-            textAlign: SC.ALIGN_CENTER,
-            valueBinding: "Gighub.bandsController.summary"
-        })
+    middleView: SC.TemplateView.design({
+        contentBinding: 'Gighub.bandController.content',
+        templateName: 'band'
     })
   })
 

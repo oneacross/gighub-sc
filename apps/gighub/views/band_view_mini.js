@@ -29,6 +29,13 @@ Gighub.BandViewMini = SC.View.extend(
         this.set('isHovering', NO);
     },
 
+    mouseDown: function() {
+        //FIXME: use routes                   
+        var content = this.get('content');
+        Gighub.bandController.set('content', content);
+        Gighub.bandController.show();
+    },
+
     render: function(context, firstTime) {
         var content = this.get('content');
         var name = content.get('name');
@@ -38,11 +45,16 @@ Gighub.BandViewMini = SC.View.extend(
         context.setClass('hover', this.get('isHovering'));
 
         if (picture) {
-            context = context.begin('div').addClass('b-pic').push('<img src="' + picture + '" alt="" class="stretch" />').end();
+            context = context.begin('div')
+                .addClass('b-pic')
+                .push('<img src="' + picture + '" alt="" class="stretch" />')
+                .end();
         }
 
-        context = context.begin('div').addClass('b-name').push(name).end();
-        context = context.begin('div').addClass('b-location').push(location).end();
+        context = context.begin('div').addClass('b-name')
+            .push(name).end();
+        context = context.begin('div').addClass('b-location')
+            .push(location).end();
 
         sc_super();
     }

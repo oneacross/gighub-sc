@@ -30,3 +30,8 @@ div.b-location {
 .hover {
     background: #fff8dc;
 }
+
+div.band-info {
+    position: absolute;
+    top: 36px;
+}
