@@ -14,10 +14,7 @@ Gighub.bandsController = SC.ArrayController.create(
 /** @scope Gighub.bandsController.prototype */ {
 
     show_all: function() {
-        var pane = Gighub.getPath('mainPage.mainPane');
-        pane.remove();
-        pane = Gighub.getPath('bandsPage.mainPane').append();
-        pane.append();
+        SC.routes.set('location', 'bandsPage/mainPane');
     }
 
 });
@@ -25,9 +22,6 @@ Gighub.bandsController = SC.ArrayController.create(
 Gighub.bandController = SC.ObjectController.create({
 
     show: function() {
-        var pane = Gighub.getPath('bandsPage.mainPane');
-        pane.remove();
-        pane = Gighub.getPath('bandPage.mainPane');
-        pane.append();
+        SC.routes.set('location', 'bandPage/mainPane');
     }
 });
