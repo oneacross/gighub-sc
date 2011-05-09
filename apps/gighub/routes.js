@@ -24,4 +24,19 @@ Gighub.routes = SC.Object.create({
         this.currentPagePane = pagePane;
     },
 
+    bands: function() {
+        this.gotoRoute({
+            pageName: 'bandsPage',
+            paneName: 'mainPane'
+        });
+    },
+
+    band: function(params) {
+        var name = params.bandName;
+        this.gotoRoute({
+            pageName: 'bandPage',
+            paneName: 'mainPane'
+        });
+    }
+
 });

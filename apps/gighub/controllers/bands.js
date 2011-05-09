@@ -14,7 +14,7 @@ Gighub.bandsController = SC.ArrayController.create(
 /** @scope Gighub.bandsController.prototype */ {
 
     show_all: function() {
-        SC.routes.set('location', 'bandsPage/mainPane');
+        SC.routes.set('location', 'bands');
     }
 
 });
@@ -22,6 +22,6 @@ Gighub.bandsController = SC.ArrayController.create(
 Gighub.bandController = SC.ObjectController.create({
 
     show: function() {
-        SC.routes.set('location', 'bandPage/mainPane');
+        SC.routes.set('location', 'band/wiresinthewalls');
     }
 });
