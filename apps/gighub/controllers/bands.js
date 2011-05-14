@@ -21,7 +21,18 @@ Gighub.bandsController = SC.ArrayController.create(
 
 Gighub.bandController = SC.ObjectController.create({
 
-    show: function() {
-        SC.routes.set('location', 'band/wiresinthewalls');
+    show: function(n) {
+
+        var query = SC.Query.local(
+            Gighub.Band,
+            'name = {name}',
+            {name: n}
+        );
+
+        var results = Gighub.store.find(query);
+        this.set('content', results.objectAt(0));
+    },
+
+    show_wires: function() {
     }
 });

@@ -30,10 +30,8 @@ Gighub.BandViewMini = SC.View.extend(
     },
 
     mouseDown: function() {
-        //FIXME: use routes                   
-        var content = this.get('content');
-        Gighub.bandController.set('content', content);
-        Gighub.bandController.show();
+        var name = this.get('content').get('name');
+        SC.routes.set('location', 'band/' + name);
     },
 
     render: function(context, firstTime) {

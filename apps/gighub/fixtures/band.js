@@ -10,14 +10,14 @@ Gighub.Band.FIXTURES = [
 
     {
         guid: 1,
-        name: "Wires in the Walls",
+        name: "WiresInTheWalls",
         location: "Los Angeles, CA",
         picture: "http://www.wiresinthewalls.com/images/RingerAd.jpg"
     },
 
     {
         guid: 2,
-        name: "The Limousines",
+        name: "TheLimousines",
         location: "Campbell, CA",
         picture: "http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/168689_10150134303534314_156802854313_7818291_3213343_n.jpg"
     },
