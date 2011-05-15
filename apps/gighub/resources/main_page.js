@@ -86,7 +86,7 @@ Gighub.bandPage = SC.Page.design({
 
     topView: SC.ToolbarView.design({
         layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView bandsButton addButton'.w(),
+        childViews: 'labelView addButton'.w(),
         anchorLocation: SC.ANCHOR_TOP,
 
         labelView: SC.LabelView.design({
@@ -94,13 +94,6 @@ Gighub.bandPage = SC.Page.design({
             controlSize: SC.LARGE_CONTROL_SIZE,
             fontWeight: SC.BOLD_WEIGHT,
             value: 'gighub'
-        }),
-
-        bandsButton: SC.ButtonView.design({
-            layout: { centerY: 0, height: 24, right: 200, width: 100 },
-            title: 'the bands',
-            action: 'show_all',
-            target: 'Gighub.bandsController'
         }),
 
         addButton: SC.ButtonView.design({

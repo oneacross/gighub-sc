@@ -1,11 +1,32 @@
 Documenting the development of Gighub
 
 Next steps:
+- Create a user model
+    A user has a name
+    A user has a password
+    A user has a primary identity type [band, venue, listener]
+    A user has a primary identity guid
+
+- Enhance the user model
+    A user can belong to many bands
+    A user can belong to many venues
+    A user can be a listener
+    Store the user's hashed password
+
+- When a user logs in, they are taken to the
+  profile of their primary identity.
+
 - Login as Hotel Utah, SF
 - Login as The Limousines
 - Login as Wires in the Walls and connect to The Limousines
 - Create a Listener model
 - Login as a Listener
+- When a user logs in, they should be taken to their primary identity.
+  Where an identity can be a Band, Venue, or Listener.
+
+Questions:
+- Should a user be able to belong to multiple bands?
+- Can a user belong to both a band and a venue? Sure, why not?
 
 Completed:
 - Add a Band model
@@ -14,3 +35,4 @@ Completed:
 - Create a view for a list of Bands
 - Add a Venue model
 - Create some Venue fixtures
+- Each venue and band has its own model.
