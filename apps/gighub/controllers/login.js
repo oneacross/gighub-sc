@@ -63,7 +63,7 @@ Gighub.loginController = SC.ObjectController.create(
             // Check status
             SC.Logger.info('HTTP status code: ' + response.status);
             if (!SC.ok(response)) {
-                throw SC.Error.desc('Invalid username or password. Try wires/walls');
+                throw SC.Error.desc('Invalid username or password');
             }
 
             // Clear data

@@ -1,12 +1,6 @@
 =============================================================================
 Project:   Gighub
-Copyright: ©2011 My Company, Inc.
+Copyright: ©2011 Matt Mendell
 =============================================================================
 
 Where bands, venues, and listeners go to connect.
-
-Issues:
-- setting a route does not work. The band controller doesn't have this
-  functionality yet. Need to extract the content from the bands controller for
-  a given band name.
-
