@@ -15,11 +15,16 @@ Gighub.BandView = SC.View.extend(
 
     layout: { top: 36 },
 
-    contentDisplayProperties: 'name'.w(),
+    contentBinding: 'Gighub.bandController.content',
+
+    displayDidChange: function() {
+        this.set('layerNeedsUpdate', YES);
+    }.observes('content'),
 
     classNames: ['band'],
 
     render: function(context, firstTime) {
+        SC.Logger.info('inside BandView render');
         var content = Gighub.bandController.get('content');
         var name = content.get('name');
         var location = content.get('location');

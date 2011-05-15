@@ -18,11 +18,12 @@ Gighub.userController = SC.ObjectController.create(
         );
 
         var results = Gighub.store.find(query);
-        if (!results.objectAt(0)) {
+        var content = results.objectAt(0);
+        if (content == null) {
             return NO;
         }
 
-        this.set('content', results.objectAt(0));
+        this.set('content', content);
         return YES;
     },
 
