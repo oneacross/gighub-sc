@@ -13,6 +13,7 @@ Gighub.main = function main() {
     // routes
     SC.routes.add('bands', Gighub.routes, 'bands');
     SC.routes.add('band/:bandName', Gighub.routes, 'band');
+    SC.routes.add('venue/:venueName', Gighub.routes, 'venue');
     SC.routes.add('', Gighub.routes, 'root');
     //SC.routes.wantsHistory = YES;
 };

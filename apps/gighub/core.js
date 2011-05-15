@@ -1,13 +1,10 @@
 // ==========================================================================
 // Project:   Gighub
-// Copyright: ©2011 My Company, Inc.
+// Copyright: ©2011 Matt Mendell
 // ==========================================================================
 /*globals Gighub */
 
 /** @namespace
-
-  My cool new app.  Describe your application.
-  
   @extends SC.Object
 */
 Gighub = SC.Application.create(

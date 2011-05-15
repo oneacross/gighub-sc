@@ -35,8 +35,17 @@ Gighub.loginController = SC.ObjectController.create(
             this.set('isLoggingIn', YES);
 
             // Simulate an HTTP call
+            // Retrieve the user
+            // Errors:
+            // The user name does not exist
+            // The password is not correct
+            var success = Gighub.userController.lookup({
+                name: username,
+                password: password
+            });
+
             var url = '/gighub/en/current/source/resources/main_page.js';
-            if (username != 'wires' || password != 'walls') {
+            if (!success) {
                 url = '/gighub/en/current/source/resources/bad_url.js';
             }
 
@@ -70,7 +79,7 @@ Gighub.loginController = SC.ObjectController.create(
             this.set('errorMessage', '');
 
             // Go to the user's profile
-            SC.routes.set('location', 'band/WiresInTheWalls');
+            Gighub.userController.gotoPrimary();
         }
         catch (err) {
             this.set('errorMessage', err.message);

@@ -1,30 +1,19 @@
 // ==========================================================================
-// Project:   Gighub.bandsController
-// Copyright: ©2011 My Company, Inc.
+// Project:   Gighub.venueController
+// Copyright: ©2011 Matt Mendell
 // ==========================================================================
 /*globals Gighub */
 
 /** @class
-
-  (Document Your Controller Here)
-
-  @extends SC.ArrayController
+  @extends SC.Object
 */
-Gighub.bandsController = SC.ArrayController.create(
-/** @scope Gighub.bandsController.prototype */ {
-
-    show_all: function() {
-        SC.routes.set('location', 'bands');
-    }
-
-});
-
-Gighub.bandController = SC.ObjectController.create({
+Gighub.venueController = SC.ObjectController.create(
+/** @scope Gighub.venueController.prototype */ {
 
     show: function(n) {
 
         var query = SC.Query.local(
-            Gighub.Band,
+            Gighub.Venue,
             'name = {name}',
             {name: n}
         );
@@ -34,8 +23,7 @@ Gighub.bandController = SC.ObjectController.create({
     },
 
     show_guid: function(guid) {
-        var result = Gighub.store.find(Gighub.Band, guid);
+        var result = Gighub.store.find(Gighub.Venue, guid);
         this.set('content', result);
     }
-
-});
+}) ;
