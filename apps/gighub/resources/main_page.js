@@ -48,7 +48,7 @@ Gighub.bandsPage = SC.Page.design({
 
     topView: SC.ToolbarView.design({
         layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView addButton'.w(),
+        childViews: 'labelView'.w(),
         anchorLocation: SC.ANCHOR_TOP,
 
         labelView: SC.ButtonView.design({
@@ -84,25 +84,7 @@ Gighub.bandPage = SC.Page.design({
   mainPane: SC.MainPane.design({
     childViews: 'middleView topView'.w(),
 
-    topView: SC.ToolbarView.design({
-        layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView addButton'.w(),
-        anchorLocation: SC.ANCHOR_TOP,
-
-        labelView: SC.LabelView.design({
-            layout: { centerY: 0, height: 24, left: 8, width: 200 },
-            controlSize: SC.LARGE_CONTROL_SIZE,
-            fontWeight: SC.BOLD_WEIGHT,
-            value: 'gighub'
-        }),
-
-        addButton: SC.ButtonView.design({
-            layout: { centerY: 0, height: 24, right: 12, width: 100 },
-            title: 'Logout',
-            target: 'Gighub.loginController',
-            action: 'logout'
-        })
-    }),
+    topView: Gighub.TopView,
 
     middleView: SC.TemplateView.design({
         contentBinding: 'Gighub.bandController.content',
@@ -121,25 +103,7 @@ Gighub.venuePage = SC.Page.design({
   mainPane: SC.MainPane.design({
     childViews: 'middleView topView'.w(),
 
-    topView: SC.ToolbarView.design({
-        layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView addButton'.w(),
-        anchorLocation: SC.ANCHOR_TOP,
-
-        labelView: SC.LabelView.design({
-            layout: { centerY: 0, height: 24, left: 8, width: 200 },
-            controlSize: SC.LARGE_CONTROL_SIZE,
-            fontWeight: SC.BOLD_WEIGHT,
-            value: 'gighub'
-        }),
-
-        addButton: SC.ButtonView.design({
-            layout: { centerY: 0, height: 24, right: 12, width: 100 },
-            title: 'Logout',
-            target: 'Gighub.loginController',
-            action: 'logout'
-        })
-    }),
+    topView: Gighub.TopView,
 
     middleView: SC.TemplateView.design({
         contentBinding: 'Gighub.venueController.content',
