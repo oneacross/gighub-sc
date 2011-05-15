@@ -1,0 +1,16 @@
+Documenting the development of Gighub
+
+Next steps:
+- Login as Hotel Utah, SF
+- Login as The Limousines
+- Login as Wires in the Walls and connect to The Limousines
+- Create a Listener model
+- Login as a Listener
+
+Completed:
+- Add a Band model
+- Login as a Band
+- View a Band's profile
+- Create a view for a list of Bands
+- Add a Venue model
+- Create some Venue fixtures
