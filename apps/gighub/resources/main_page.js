@@ -77,17 +77,11 @@ Gighub.bandsPage = SC.Page.design({
 
 // The Band page
 Gighub.bandPage = SC.Page.design({
-
-  mainPane: SC.MainPane.design({
-    childViews: 'middleView topView'.w(),
-
-    topView: Gighub.TopView,
-
-    middleView: SC.TemplateView.design({
-        contentBinding: 'Gighub.bandController.content',
-        templateName: 'band'
+    mainPane: SC.MainPane.design({
+        childViews: 'topView middleView'.w(),
+        topView: Gighub.TopView,
+        middleView: Gighub.BandView
     })
-  })
 
 });
 

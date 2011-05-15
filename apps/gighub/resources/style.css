@@ -46,6 +46,25 @@ div.venue-info {
     top: 36px;
 }
 
+div.band-name {
+    font-size: 30px;
+}
+
+div.band-location {
+    position: absolute;
+    font-style: italic;
+    font-size: 20px;
+    left: 30px;
+}
+
+a.band-website {
+    position: absolute;
+    font-style: italic;
+    font-size: 20px;
+    top: 65px;
+    left: 30px;
+}
+
 div.v-name {
     font-size: 30px;
 }

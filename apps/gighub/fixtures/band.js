@@ -13,6 +13,7 @@ Gighub.Band.FIXTURES = [
         name: "WiresInTheWalls",
         location: "Los Angeles, CA",
         picture: "http://www.wiresinthewalls.com/images/RingerAd.jpg",
+        website: "http://www.wiresinthewalls.com",
         venues: [1, 2]
     },
 
@@ -21,6 +22,7 @@ Gighub.Band.FIXTURES = [
         name: "TheLimousines",
         location: "Campbell, CA",
         picture: "http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/168689_10150134303534314_156802854313_7818291_3213343_n.jpg",
+        website: "http://www.google.com",
         venues: [1]
     },
 
@@ -29,6 +31,7 @@ Gighub.Band.FIXTURES = [
         name: "Radiohead",
         location: "Abingdon, Oxfordshire",
         picture: "http://a8.sphotos.ak.fbcdn.net/hphotos-ak-ash1/168910_500516062244_6979332244_6815736_3506434_n.jpg",
+        website: "http://www.google.com",
         venues: [1, 2]
     }
 
