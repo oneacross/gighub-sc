@@ -38,6 +38,11 @@ Gighub.TopView = SC.ToolbarView.extend(
         layout: { centerY: 0, height: 24, right: 12, width: 100 },
         title: 'Logout',
         target: 'Gighub.loginController',
-        action: 'logout'
+        action: 'logout',
+
+        isVisibleBinding: 'Gighub.userController.loggedIn',
+        displayDidChange: function() {
+            this.set('layerNeedsUpdate', YES);
+        }.observes('isVisible')
     })
 });

@@ -1,30 +1,16 @@
 // ==========================================================================
 // Project:   Gighub - mainPage
-// Copyright: ©2011 My Company, Inc.
+// Copyright: ©2011 Matt Mendell
 // ==========================================================================
 /*globals Gighub */
 
-// This page describes the main user interface for your application.
+// Gighub's main page
 Gighub.mainPage = SC.Page.design({
 
-  // The main pane is made visible on screen as soon as your app is loaded.
-  // Add childViews to this pane for views to display immediately on page
-  // load.
   mainPane: SC.MainPane.design({
     childViews: 'middleView topView'.w(),
 
-    topView: SC.ToolbarView.design({
-        layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView'.w(),
-        anchorLocation: SC.ANCHOR_TOP,
-
-        labelView: SC.LabelView.design({
-            layout: { centerY: 0, height: 24, left: 8, width: 200 },
-            controlSize: SC.LARGE_CONTROL_SIZE,
-            fontWeight: SC.BOLD_WEIGHT,
-            value: 'gighub'
-        })
-    }),
+    topView: Gighub.TopView,
 
     middleView: SC.View.design({
         layout: { top: 40, centerX: 0, height: 150, width: 400 },
@@ -32,9 +18,7 @@ Gighub.mainPage = SC.Page.design({
         
         loginView: Gighub.LoginView
     })
-
   })
-
 });
 
 // The Bands page
@@ -43,19 +27,7 @@ Gighub.bandsPage = SC.Page.design({
   mainPane: SC.MainPane.design({
     childViews: 'middleView topView'.w(),
 
-    topView: SC.ToolbarView.design({
-        layout: { top: 0, left: 0, right: 0, height: 36 },
-        childViews: 'labelView'.w(),
-        anchorLocation: SC.ANCHOR_TOP,
-
-        labelView: SC.ButtonView.design({
-            layout: { centerY: 0, height: 24, left: 8, width: 100 },
-            fontWeight: SC.BOLD_WEIGHT,
-            title: 'gighub',
-            target: 'Gighub.routes',
-            action: 'root'
-        })
-    }),
+    topView: Gighub.TopView,
 
     middleView: SC.ScrollView.design({
         hasHorizontalScroller: NO,
