@@ -75,6 +75,11 @@ Gighub.loginController = SC.ObjectController.create(
         catch (err) {
             this.set('errorMessage', err.message);
         }
+    },
+
+    logout: function() {
+        // Go back to the main page
+        SC.routes.set('location', '');
     }
 
-}) ;
+});

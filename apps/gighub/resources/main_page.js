@@ -57,13 +57,6 @@ Gighub.bandsPage = SC.Page.design({
             title: 'gighub',
             target: 'Gighub.routes',
             action: 'root'
-        }),
-
-        addButton: SC.ButtonView.design({
-            layout: { centerY: 0, height: 24, right: 12, width: 100 },
-            title: 'Login',
-            target: 'Gighub.bandController',
-            action: 'show_wires'
         })
     }),
 
@@ -112,7 +105,9 @@ Gighub.bandPage = SC.Page.design({
 
         addButton: SC.ButtonView.design({
             layout: { centerY: 0, height: 24, right: 12, width: 100 },
-            title: "Login"
+            title: 'Logout',
+            target: 'Gighub.loginController',
+            action: 'logout'
         })
     }),
 

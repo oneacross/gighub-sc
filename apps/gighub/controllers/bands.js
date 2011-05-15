@@ -31,8 +31,6 @@ Gighub.bandController = SC.ObjectController.create({
 
         var results = Gighub.store.find(query);
         this.set('content', results.objectAt(0));
-    },
-
-    show_wires: function() {
     }
+
 });
