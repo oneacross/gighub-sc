@@ -13,7 +13,7 @@ Gighub.Venue.FIXTURES = [
         name: 'HotelUtah',
         location: 'San Francisco, CA',
         picture: 'http://www.thehotelutahsaloon.com/images/utahFront.jpg',
-        website: 'www.thehotelutahsaloon.com',
+        website: 'http://www.thehotelutahsaloon.com',
         bands: [1, 2, 3]
     },
 
@@ -22,7 +22,7 @@ Gighub.Venue.FIXTURES = [
         name: 'BootlegTheater',
         location: 'Los Angeles, CA',
         picture: 'http://www.bootlegtheater.com/images/bootleg-theater-logo-nov-2009.gif',
-        website: 'www.bootlegtheater.org',
+        website: 'http://www.bootlegtheater.org',
         bands: [1, 3]
     },
 ];

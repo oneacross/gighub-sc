@@ -40,3 +40,27 @@ div.venue-info {
     position: absolute;
     top: 36px;
 }
+
+div.venue-info {
+    position: absolute;
+    top: 36px;
+}
+
+div.v-name {
+    font-size: 30px;
+}
+
+div.v-location {
+    position: absolute;
+    font-style: italic;
+    font-size: 20px;
+    left: 30px;
+}
+
+a.v-website {
+    position: absolute;
+    font-style: italic;
+    font-size: 20px;
+    top: 65px;
+    left: 30px;
+}

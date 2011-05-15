@@ -75,12 +75,9 @@ Gighub.bandsPage = SC.Page.design({
 
 });
 
-// This page shows one band
+// The Band page
 Gighub.bandPage = SC.Page.design({
 
-  // The main pane is made visible on screen as soon as your app is loaded.
-  // Add childViews to this pane for views to display immediately on page 
-  // load.
   mainPane: SC.MainPane.design({
     childViews: 'middleView topView'.w(),
 
@@ -94,21 +91,11 @@ Gighub.bandPage = SC.Page.design({
 
 });
 
-// This page shows one venue
+// The Venue page
 Gighub.venuePage = SC.Page.design({
-
-  // The main pane is made visible on screen as soon as your app is loaded.
-  // Add childViews to this pane for views to display immediately on page 
-  // load.
-  mainPane: SC.MainPane.design({
-    childViews: 'middleView topView'.w(),
-
-    topView: Gighub.TopView,
-
-    middleView: SC.TemplateView.design({
-        contentBinding: 'Gighub.venueController.content',
-        templateName: 'venue'
+    mainPane: SC.MainPane.design({
+        childViews: 'topView middleView'.w(),
+        topView: Gighub.TopView,
+        middleView: Gighub.VenueView
     })
-  })
-
 });
