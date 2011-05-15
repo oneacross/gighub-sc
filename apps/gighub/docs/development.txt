@@ -1,12 +1,7 @@
 Documenting the development of Gighub
 
 Next steps:
-- Create a VenueBandConnection model
-  A Connection model has a venue_guid, band_guid
-- A band has many venue connections
-- A venue has many band connections
-
-- Login as Wires in the Walls (NickTracz) and connect to Hotel Utah
+- Login as nick, name should be present in top view
 - Login as Wires in the Walls (NickTracz) and rate Hotel Utah
 - Login as Wires in the Walls (NickTracz) and connect to The Limousines
 - Pretty up the Band page

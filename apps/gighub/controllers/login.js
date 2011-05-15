@@ -78,6 +78,8 @@ Gighub.loginController = SC.ObjectController.create(
             // Clear data
             this.set('errorMessage', '');
 
+            Gighub.userController.set('loggedIn', YES);
+
             // Go to the user's profile
             Gighub.userController.gotoPrimary();
         }
@@ -87,6 +89,7 @@ Gighub.loginController = SC.ObjectController.create(
     },
 
     logout: function() {
+        Gighub.userController.set('loggedIn', NO);
         // Go back to the main page
         SC.routes.set('location', '');
     }

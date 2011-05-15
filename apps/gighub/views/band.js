@@ -5,9 +5,6 @@
 /*globals Gighub */
 
 /** @class
-
-  (Document Your View Here)
-
   @extends SC.View
 */
 Gighub.BandView = SC.View.extend(
@@ -27,7 +24,6 @@ Gighub.BandView = SC.View.extend(
         classNames: ['band'],
 
         render: function(context, firstTime) {
-            SC.Logger.info('inside BandView render');
             var content = Gighub.bandController.get('content');
             var name = content.get('name');
             var location = content.get('location');

@@ -11,7 +11,7 @@ Gighub.TopView = SC.ToolbarView.extend(
 /** @scope Gighub.TopView.prototype */ {
 
     layout: { top: 0, left: 0, right: 0, height: 36 },
-    childViews: 'labelView logoutButton'.w(),
+    childViews: 'labelView nameView logoutButton'.w(),
     anchorLocation: SC.ANCHOR_TOP,
 
     labelView: SC.LabelView.design({
@@ -19,6 +19,19 @@ Gighub.TopView = SC.ToolbarView.extend(
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
         value: 'gighub'
+    }),
+
+    nameView: SC.LabelView.design({
+        layout: { centerY: 0, height: 24, right: 100, width: 100 },
+        controlSize: SC.LARGE_CONTROL_SIZE,
+        fontWeight: SC.BOLD_WEIGHT,
+
+        valueBinding: 'Gighub.userController.name',
+        isVisibleBinding: 'Gighub.userController.loggedIn',
+
+        displayDidChange: function() {
+            this.set('layerNeedsUpdate', YES);
+        }.observes('value')
     }),
 
     logoutButton: SC.ButtonView.design({

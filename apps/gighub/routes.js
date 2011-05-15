@@ -3,7 +3,6 @@ Gighub.routes = SC.Object.create({
     currentPagePane: null,
 
     gotoRoute: function(params) {
-        SC.Logger.log('inside routes.gotoRoute');
 
         var pageName = params.pageName;
         if (pageName == undefined || pageName == '') {
@@ -37,7 +36,6 @@ Gighub.routes = SC.Object.create({
     },
 
     bands: function() {
-        SC.Logger.log('inside routes.bands');
         this.gotoRoute({
             pageName: 'bandsPage',
             paneName: 'mainPane'
@@ -46,7 +44,6 @@ Gighub.routes = SC.Object.create({
 
     band: function(params) {
         var name = params.bandName;
-        SC.Logger.log('inside routes.band');
         Gighub.bandController.show(name);
         this.gotoRoute({
             pageName: 'bandPage',
@@ -63,7 +60,6 @@ Gighub.routes = SC.Object.create({
 
     venue: function(params) {
         var name = params.venueName;
-        SC.Logger.log('inside routes.venue');
         Gighub.venueController.show(name);
         this.gotoRoute({
             pageName: 'venuePage',

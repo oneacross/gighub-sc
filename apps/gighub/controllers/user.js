@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Gighub.userController
-// Copyright: ©2011 My Company, Inc.
+// Copyright: ©2011 Matt Mendell
 // ==========================================================================
 /*globals Gighub */
 
@@ -9,6 +9,13 @@
 */
 Gighub.userController = SC.ObjectController.create(
 /** @scope Gighub.userController.prototype */ {
+
+    // Field to determine when a user is logged in
+    loggedIn: NO,
+
+    loggedInDidChange: function() {
+        SC.Logger.info('loggedIn changed to ' + this.loggedIn);
+    }.observes('loggedIn'),
 
     lookup: function(params) {
         var query = SC.Query.local(
@@ -46,4 +53,4 @@ Gighub.userController = SC.ObjectController.create(
         return YES;
     }
 
-}) ;
+});
