@@ -7,6 +7,12 @@
 /** @class
   @extends SC.Object
 */
+Gighub.venuesController = SC.ArrayController.create({
+    show_all: function() {
+        SC.routes.set('location', 'venues');
+    }
+});
+
 Gighub.venueController = SC.ObjectController.create(
 /** @scope Gighub.venueController.prototype */ {
 
@@ -26,4 +32,4 @@ Gighub.venueController = SC.ObjectController.create(
         var result = Gighub.store.find(Gighub.Venue, guid);
         this.set('content', result);
     }
-}) ;
+});

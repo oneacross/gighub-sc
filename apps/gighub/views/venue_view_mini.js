@@ -1,18 +1,18 @@
 // ==========================================================================
-// Project:   Gighub.BandViewMini
-// Copyright: ©2011 My Company, Inc.
+// Project:   Gighub.VenueViewMini
+// Copyright: ©2011 Matt Mendell
 // ==========================================================================
 /*globals Gighub */
 
 /** @class
   @extends SC.View
 */
-Gighub.BandViewMini = SC.View.extend(
-/** @scope Gighub.BandViewMini.prototype */ {
+Gighub.VenueViewMini = SC.View.extend(
+/** @scope Gighub.VenueViewMini.prototype */ {
 
     contentDisplayProperties: "name location picture".w(),
 
-    classNames: ['band'],
+    classNames: ['venue'],
 
     isHovering: NO,
 
@@ -28,7 +28,7 @@ Gighub.BandViewMini = SC.View.extend(
 
     mouseDown: function() {
         var name = this.get('content').get('name');
-        SC.routes.set('location', 'band/' + name);
+        SC.routes.set('location', 'venue/' + name);
     },
 
     render: function(context, firstTime) {

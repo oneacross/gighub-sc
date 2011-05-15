@@ -54,6 +54,13 @@ Gighub.routes = SC.Object.create({
         });
     },
 
+    venues: function() {
+        this.gotoRoute({
+            pageName: 'venuesPage',
+            paneName: 'mainPane'
+        });
+    },
+
     venue: function(params) {
         var name = params.venueName;
         SC.Logger.log('inside routes.venue');
