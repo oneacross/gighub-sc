@@ -40,12 +40,9 @@ Gighub.TopView = SC.ToolbarView.extend(
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
 
+        displayProperties: ['value'],
         valueBinding: 'Gighub.userController.name',
         isVisibleBinding: 'Gighub.userController.loggedIn',
-
-        displayDidChange: function() {
-            this.set('layerNeedsUpdate', YES);
-        }.observes('value')
     }),
 
     logoutButton: SC.ButtonView.design({
@@ -54,9 +51,7 @@ Gighub.TopView = SC.ToolbarView.extend(
         target: 'Gighub.loginController',
         action: 'logout',
 
+        displayProperties: ['isVisible'],
         isVisibleBinding: 'Gighub.userController.loggedIn',
-        displayDidChange: function() {
-            this.set('layerNeedsUpdate', YES);
-        }.observes('isVisible')
     })
 });

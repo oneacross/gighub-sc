@@ -7,28 +7,32 @@
 /** @class
   @extends SC.View
 */
-Gighub.VenueView = SC.View.extend(
+Gighub.VenueView = SC.View.extend(SC.ContentDisplay, 
 /** @scope Gighub.VenueView.prototype */ {
 
     layout: { top: 36 },
-
-    name: '',
-    location: '',
-    website: '',
-
-    nameBinding: 'Gighub.venueController.name',
-    locationBinding: 'Gighub.venueController.location',
-    websiteBinding: 'Gighub.venueController.website',
-    displayProperties: ['name', 'location', 'website'],
-
     classNames: ['venue'],
 
+    contentDisplayProperties: 'name location website'.w(),
+    contentBinding: 'Gighub.venueController.content',
+
     render: function(context, firstTime) {
+        var name = '';
+        var location = '';
+        var website = '';
+        var content = this.get('content');
+
+        if (content != null) {
+            name = content.get('name');
+            location = content.get('location');
+            website = content.get('website');
+        }
+
         context = context.begin('div').addClass('v-name')
-                         .push(this.get('name')).end();
+                         .push(name).end();
         context = context.begin('div').addClass('v-location')
-                         .push(this.get('location')).end();
-        context = context.begin('a').addClass('v-website').attr('href', this.get('website'))
+                         .push(location).end();
+        context = context.begin('a').addClass('v-website').attr('href', website)
                          .push('website').end();
 
         sc_super();

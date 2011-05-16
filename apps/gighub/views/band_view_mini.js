@@ -10,9 +10,9 @@
 Gighub.BandViewMini = SC.View.extend(
 /** @scope Gighub.BandViewMini.prototype */ {
 
-    contentDisplayProperties: "name location picture".w(),
-
     classNames: ['band'],
+
+    contentDisplayProperties: "name location picture".w(),
 
     isHovering: NO,
 
