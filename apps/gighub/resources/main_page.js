@@ -57,9 +57,10 @@ Gighub.bandPage = SC.Page.design({
 // The Venue page
 Gighub.venuePage = SC.Page.design({
     mainPane: SC.MainPane.design({
-        childViews: 'topView middleView'.w(),
+        childViews: 'topView middleView ratingView'.w(),
         topView: Gighub.TopView,
-        middleView: Gighub.VenueView
+        middleView: Gighub.VenueView,
+        ratingView: Gighub.RatingView
     })
 });
 

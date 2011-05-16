@@ -1,12 +1,9 @@
 Documenting the development of Gighub
 
 Next steps:
-- Login as nick, name should be present in top view
 - Login as Wires in the Walls (NickTracz) and rate Hotel Utah
-- Login as Wires in the Walls (NickTracz) and connect to The Limousines
 - Pretty up the Band page
 - Pretty up the Venue page
-
 - Enhance the user model
     A user can belong to many bands
     A user can belong to many venues
@@ -20,6 +17,7 @@ Questions:
 - Can a user belong to both a band and a venue? Sure, why not?
 - Should the default privacy mode be like Twitter or Facebook?
   Share everything, Share nothing, respectively.
+- Should a band have a rating?
 
 Completed:
 - Add a Band model
@@ -38,3 +36,7 @@ Completed:
   profile of their primary identity.
 - Login as Hotel Utah, SF
 - Login as Giovanni from The Limousines
+- Login as nick, name should be present in top view
+- Create a simple rating view
+- Add a bands and venues buttons on the top
+  to take you to the list of bands or venues.

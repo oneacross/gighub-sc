@@ -12,7 +12,10 @@ Gighub.VenueView = SC.View.extend(
 
     layout: { top: 36 },
 
-    contentDisplayProperties: 'name'.w(),
+    contentBinding: 'Gighub.venueController.content',
+    displayDidChange: function() {
+        this.set('layerNeedsUpdate', YES);
+    }.observes('content'),
 
     classNames: ['venue'],
 
@@ -29,4 +32,31 @@ Gighub.VenueView = SC.View.extend(
         sc_super();
     }
 
+});
+
+Gighub.RatingView = SC.View.extend({
+    layout: { top: 150, height: 50, width: 250 },
+
+    contentBinding: 'Gighub.venueController.content',
+    displayDidChange: function() {
+        this.set('layerNeedsUpdate', YES);
+    }.observes('content'),
+
+    render: function(context) {
+        var content = Gighub.venueController.get('content');
+        var rating = content.get('rating');
+
+        // create stars
+        for (i = 1; i < 6; i += 1) {
+            var star_url = 'http://etc.usf.edu/clipart/37700/37717/05-star_37717_md.gif';
+            if (i <= rating) {
+                star_url = 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg';
+            }
+            context = context.begin('span').addClass('v-star');
+            context = context.begin('img').attr('src', star_url).addClass('stretch').end();
+            context = context.end();
+        }
+
+        sc_super();
+    }
 });

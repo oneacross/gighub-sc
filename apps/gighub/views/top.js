@@ -11,7 +11,7 @@ Gighub.TopView = SC.ToolbarView.extend(
 /** @scope Gighub.TopView.prototype */ {
 
     layout: { top: 0, left: 0, right: 0, height: 36 },
-    childViews: 'labelView nameView logoutButton'.w(),
+    childViews: 'labelView bandsButton venuesButton nameView logoutButton'.w(),
     anchorLocation: SC.ANCHOR_TOP,
 
     labelView: SC.LabelView.design({
@@ -19,6 +19,20 @@ Gighub.TopView = SC.ToolbarView.extend(
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
         value: 'gighub'
+    }),
+
+    bandsButton: SC.ButtonView.design({
+        layout: { centerY: 0, height: 24, left: 300, width: 100 },
+        title: 'bands',
+        target: 'Gighub.bandsController',
+        action: 'show_all'
+    }),
+
+    venuesButton: SC.ButtonView.design({
+        layout: { centerY: 0, height: 24, left: 400, width: 100 },
+        title: 'venues',
+        target: 'Gighub.venuesController',
+        action: 'show_all'
     }),
 
     nameView: SC.LabelView.design({

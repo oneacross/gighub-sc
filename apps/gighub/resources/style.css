@@ -83,3 +83,15 @@ a.v-website {
     top: 65px;
     left: 30px;
 }
+
+div.v-rating {
+    font-size: 20px;
+}
+
+span.v-star {
+    width: 50px;
+}
+
+span.v-star img {
+    width: 50px;
+}

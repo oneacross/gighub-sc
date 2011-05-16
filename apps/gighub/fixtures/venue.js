@@ -14,6 +14,7 @@ Gighub.Venue.FIXTURES = [
         location: 'San Francisco, CA',
         picture: 'http://www.thehotelutahsaloon.com/images/utahFront.jpg',
         website: 'http://www.thehotelutahsaloon.com',
+        rating: 5,
         bands: [1, 2, 3]
     },
 
@@ -23,6 +24,7 @@ Gighub.Venue.FIXTURES = [
         location: 'Los Angeles, CA',
         picture: 'http://www.bootlegtheater.com/images/bootleg-theater-logo-nov-2009.gif',
         website: 'http://www.bootlegtheater.org',
+        rating: 4,
         bands: [1, 3]
     },
 ];

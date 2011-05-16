@@ -11,7 +11,7 @@ Gighub.BandView = SC.View.extend(
 /** @scope Gighub.BandView.prototype */ {
 
     layout: { top: 36 },
-    childViews: 'contentView buttonView'.w(),
+    childViews: 'contentView'.w(),
 
     contentView: SC.View.extend({
         layout: { top: 0, height: 100 },
@@ -35,13 +35,6 @@ Gighub.BandView = SC.View.extend(
 
             sc_super();
         }
-    }),
-
-    buttonView: SC.ButtonView.extend({
-        layout: { top: 100, height: 50, width: 100 },
-        title: 'View Venues',
-        target: 'Gighub.venuesController',
-        action: 'show_all'
     })
 
 });

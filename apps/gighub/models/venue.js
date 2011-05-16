@@ -16,6 +16,7 @@ Gighub.Venue = SC.Record.extend(
     location: SC.Record.attr(String),
     picture: SC.Record.attr(String),
     website: SC.Record.attr(String),
+    rating: SC.Record.attr(Number),
     bands: SC.Record.toMany('Gighub.Band', {
         inverse: 'venues',
         isMaster: NO
