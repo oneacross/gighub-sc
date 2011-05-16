@@ -1,14 +1,26 @@
 Documenting the development of Gighub
 
 Next steps:
+- Rate by clicking stars
+- Stars change color when hovering over
+- Create VenueReview model
+  has rating (1, 2, 3, 4, or 5)
+  has venue_guid
+  has reviewer_guid
+  has reviewer_type (band or user)
+  has text (optional)
+- A venue's displayed review is simply the average of its reviews
 - Login as Wires in the Walls (NickTracz) and rate Hotel Utah
-- Pretty up the Band page
-- Pretty up the Venue page
+  as 4 with a sample review text.
+- Deploy version 0.1!
+
+- A user or band may modify or delete their review
 - Enhance the user model
     A user can belong to many bands
     A user can belong to many venues
     A user can be a listener
     Store the user's hashed password
+- Have the initial page be the User's page
 - Create a Listener model
 - Login as a Listener
 
@@ -18,6 +30,8 @@ Questions:
 - Should the default privacy mode be like Twitter or Facebook?
   Share everything, Share nothing, respectively.
 - Should a band have a rating?
+- Can we rename listener to fan? Or follower? Or groupie?
+- Have a special title for solid reviewers? groupie?
 
 Completed:
 - Add a Band model
