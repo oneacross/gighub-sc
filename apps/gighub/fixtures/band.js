@@ -14,7 +14,7 @@ Gighub.Band.FIXTURES = [
         location: "Los Angeles, CA",
         picture: "http://www.wiresinthewalls.com/images/RingerAd.jpg",
         website: "http://www.wiresinthewalls.com",
-        venues: [1, 2]
+        reviews: [1]
     },
 
     {
@@ -31,8 +31,7 @@ Gighub.Band.FIXTURES = [
         name: "Radiohead",
         location: "Abingdon, Oxfordshire",
         picture: "http://a8.sphotos.ak.fbcdn.net/hphotos-ak-ash1/168910_500516062244_6979332244_6815736_3506434_n.jpg",
-        website: "http://www.google.com",
-        venues: [1, 2]
+        website: "http://www.google.com"
     }
 
 ];
