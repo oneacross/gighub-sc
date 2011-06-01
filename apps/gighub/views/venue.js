@@ -40,11 +40,8 @@ Gighub.VenueView = SC.View.extend(SC.ContentDisplay,
 
 });
 
-Gighub.StarView1 = SC.ImageView.extend({
+Gighub.StarView = SC.ImageView.extend({
 
-    layout: { height: 50, width: 50 },
-
-    num: 1,
     rating: 0,
 
     ratingBinding: 'Gighub.venueController.rating',
@@ -69,134 +66,12 @@ Gighub.StarView1 = SC.ImageView.extend({
 
     mouseExited: function() {
         this.set('value', this.get('star'));
-    }
-});
-
-Gighub.StarView2 = SC.ImageView.extend({
-
-    layout: { left: 50, height: 50, width: 50 },
-
-    num: 2,
-    rating: 0,
-
-    ratingBinding: 'Gighub.venueController.rating',
-    displayProperties: ['rating'],
-
-    star: '',
-    value: 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg',
-
-    updateValue: function() {
-        if (this.get('rating') >= this.get('num')) {
-            this.set('value', 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg');
-        }
-        else {
-            this.set('value', 'http://etc.usf.edu/clipart/37700/37717/05-star_37717_md.gif');
-        }
-    }.observes('rating'),
-
-    mouseEntered: function() {
-        this.set('star', this.get('value'));
-        this.set('value', 'http://www1.pgcps.org/uploadedImages/Schools_and_Centers/Middle_Schools/G_James_Gholson/blue%20star.jpg');
     },
 
-    mouseExited: function() {
-        this.set('value', this.get('star'));
-    }
-});
-
-Gighub.StarView3 = SC.ImageView.extend({
-
-    layout: { left: 100, height: 50, width: 50 },
-
-    num: 3,
-    rating: 0,
-
-    ratingBinding: 'Gighub.venueController.rating',
-    displayProperties: ['rating'],
-
-    star: '',
-    value: 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg',
-
-    updateValue: function() {
-        if (this.get('rating') >= this.get('num')) {
-            this.set('value', 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg');
-        }
-        else {
-            this.set('value', 'http://etc.usf.edu/clipart/37700/37717/05-star_37717_md.gif');
-        }
-    }.observes('rating'),
-
-    mouseEntered: function() {
-        this.set('star', this.get('value'));
-        this.set('value', 'http://www1.pgcps.org/uploadedImages/Schools_and_Centers/Middle_Schools/G_James_Gholson/blue%20star.jpg');
-    },
-
-    mouseExited: function() {
-        this.set('value', this.get('star'));
-    }
-});
-
-Gighub.StarView4 = SC.ImageView.extend({
-
-    layout: { left: 150, height: 50, width: 50 },
-
-    num: 4,
-    rating: 0,
-
-    ratingBinding: 'Gighub.venueController.rating',
-    displayProperties: ['rating'],
-
-    star: '',
-    value: 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg',
-
-    updateValue: function() {
-        if (this.get('rating') >= this.get('num')) {
-            this.set('value', 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg');
-        }
-        else {
-            this.set('value', 'http://etc.usf.edu/clipart/37700/37717/05-star_37717_md.gif');
-        }
-    }.observes('rating'),
-
-    mouseEntered: function() {
-        this.set('star', this.get('value'));
-        this.set('value', 'http://www1.pgcps.org/uploadedImages/Schools_and_Centers/Middle_Schools/G_James_Gholson/blue%20star.jpg');
-    },
-
-    mouseExited: function() {
-        this.set('value', this.get('star'));
-    }
-});
-
-Gighub.StarView5 = SC.ImageView.extend({
-
-    layout: { left: 200, height: 50, width: 50 },
-
-    num: 5,
-    rating: 0,
-
-    ratingBinding: 'Gighub.venueController.rating',
-    displayProperties: ['rating'],
-
-    star: '',
-    value: 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg',
-
-    updateValue: function() {
-        if (this.get('rating') >= this.get('num')) {
-            this.set('value', 'http://www.cs.uwaterloo.ca/~wics/images/star.jpg');
-        }
-        else {
-            this.set('value', 'http://etc.usf.edu/clipart/37700/37717/05-star_37717_md.gif');
-        }
-    }.observes('rating'),
-
-    mouseEntered: function() {
-        this.set('star', this.get('value'));
-        this.set('value', 'http://www1.pgcps.org/uploadedImages/Schools_and_Centers/Middle_Schools/G_James_Gholson/blue%20star.jpg');
-    },
-
-    mouseExited: function() {
-        this.set('value', this.get('star'));
+    mouseDown: function() {
+        // create a new VenueReview with the current band and venue
+        // don't necessarily want to update the url
+        // dang, I haven't actually created anything yet
     }
 });
 
@@ -205,9 +80,24 @@ Gighub.RatingView = SC.View.extend({
 
     childViews: 'star1 star2 star3 star4 star5'.w(),
 
-    star1: Gighub.StarView1,
-    star2: Gighub.StarView2,
-    star3: Gighub.StarView3,
-    star4: Gighub.StarView4,
-    star5: Gighub.StarView5
+    star1: Gighub.StarView.extend({
+        layout: { height: 50, width: 50 },
+        num: 1
+    }),
+    star2: Gighub.StarView.extend({
+        layout: { left: 50, height: 50, width: 50 },
+        num: 2
+    }),
+    star3: Gighub.StarView.extend({
+        layout: { left: 100, height: 50, width: 50 },
+        num: 3
+    }),
+    star4: Gighub.StarView.extend({
+        layout: { left: 150, height: 50, width: 50 },
+        num: 4
+    }),
+    star5: Gighub.StarView.extend({
+        layout: { left: 200, height: 50, width: 50 },
+        num: 5
+    })
 });
