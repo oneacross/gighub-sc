@@ -14,6 +14,7 @@ Gighub.LoginView = SC.View.extend(
 /** @scope Gighub.LoginView.prototype */ {
 
     childViews: 'username password loginButton errorMessage'.w(),
+    layout: { left: 0, height: 130, width: 370 },
 
     username: SC.View.design({
         layout: { left: 17, right: 14, top: 17, height: 26 },

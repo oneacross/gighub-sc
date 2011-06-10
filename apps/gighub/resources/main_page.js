@@ -13,7 +13,7 @@ Gighub.mainPage = SC.Page.design({
     topView: Gighub.TopView,
 
     middleView: SC.View.design({
-        layout: { top: 40, centerX: 0, height: 150, width: 400 },
+        layout: { top: 40 },
         childViews: 'loginView'.w(),
         
         loginView: Gighub.LoginView
