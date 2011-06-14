@@ -114,26 +114,25 @@ Gighub.loginController = SC.ObjectController.create(
                 throw SC.Error.desc('Password is required');
             }
 
-            // Start login
-            this.set('isLoggingIn', YES);
-
-            // Simulate an HTTP call
-            // Retrieve the user
-            // Errors:
-            // The user exists
-            var user_exists = Gighub.userController.lookup({
+            // Does the user already exist?
+            var user = Gighub.userController.lookup({
                 name: username,
                 password: password
             });
 
-            var url = '/gighub/en/current/source/resources/main_page.js';
-            if (user_exists) {
-                url = '/gighub/en/current/source/resources/bad_url.js';
+            if (user) {
+                throw SC.Error.desc('Username already taken');
             }
 
-            SC.Request.getUrl(url)
-                .notify(this, 'endSignup')
-                .send();
+            // Create new user
+            user = Gighub.store.createRecord(Gighub.User, {
+                name: this.get('signup_username'),
+                password: this.get('signup_password')
+            });
+
+            // Save to backend
+            user.commitRecord();
+            Gighub.userController.set('content', user);
 
             return YES;
         }
@@ -144,38 +143,6 @@ Gighub.loginController = SC.ObjectController.create(
             this.set('isLoggingIn', NO);
 
             return NO;
-        }
-    },
-
-    endSignup: function(response) {
-        try {
-            this.set('isLoggingIn', NO);
-
-            // Check status
-            SC.Logger.info('HTTP status code: ' + response.status);
-            if (!SC.ok(response)) {
-                throw SC.Error.desc('Username already taken');
-            }
-
-            // Create new user
-            var user = Gighub.store.createRecord(Gighub.User, {
-                name: this.get('signup_username'),
-                password: this.get('signup_password')
-            });
-
-            Gighub.userController.set('content', user);
-            Gighub.userController.set('loggedIn', YES);
-
-            // Clear data
-            this.set('signup_username', '');
-            this.set('signup_email', '');
-            this.set('signup_password', '');
-
-            // Go to the user's profile
-            //Gighub.userController.gotoPrimary();
-        }
-        catch (err) {
-            this.set('signup_error_message', err.message);
         }
     }
 
