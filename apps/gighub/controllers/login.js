@@ -130,7 +130,7 @@ Gighub.loginController = SC.ObjectController.create(
 
             // Save to backend
             user.commitRecord();
-            Gighub.userController.set('content', user);
+            SC.routes.set('location', 'user/' + this.get('signup_username'));
 
             return YES;
         }

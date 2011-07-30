@@ -52,7 +52,6 @@ Gighub.bandPage = SC.Page.design({
         topView: Gighub.TopView,
         middleView: Gighub.BandView
     })
-
 });
 
 // The Venue page
@@ -82,5 +81,14 @@ Gighub.venuesPage = SC.Page.design({
                 rowHeight: 100
             })
         })
+    })
+});
+
+// The User page
+Gighub.userPage = SC.Page.design({
+    mainPane: SC.MainPane.design({
+        childViews: 'topView middleView'.w(),
+        topView: Gighub.TopView,
+        middleView: Gighub.UserView
     })
 });

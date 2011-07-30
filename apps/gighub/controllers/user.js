@@ -66,6 +66,19 @@ Gighub.userController = SC.ObjectController.create(
 
         SC.routes.set('location', path);
         return YES;
-    }
+    },
+
+    show: function(n) {
+
+        var query = SC.Query.local(
+            Gighub.User,
+            'name = {name}',
+            {name: n}
+        );
+
+        var results = Gighub.store.find(query);
+        this.set('content', results.objectAt(0));
+    },
+
 
 });
