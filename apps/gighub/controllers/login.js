@@ -114,18 +114,16 @@ Gighub.loginController = SC.ObjectController.create(
                 throw SC.Error.desc('Password is required');
             }
 
-            // Does the user already exist?
-            var user = Gighub.userController.lookup({
-                name: username,
-                password: password
+            var user_exists = Gighub.userController.does_user_exist({
+                name: username
             });
 
-            if (user) {
+            if (user_exists) {
                 throw SC.Error.desc('Username already taken');
             }
 
             // Create new user
-            user = Gighub.store.createRecord(Gighub.User, {
+            var user = Gighub.store.createRecord(Gighub.User, {
                 name: this.get('signup_username'),
                 password: this.get('signup_password')
             });

@@ -18,11 +18,11 @@ Gighub.userController = SC.ObjectController.create(
     }.observes('loggedIn'),
 
     lookup: function(params) {
-        var query = SC.Query.local(
-            Gighub.User,
-            'name = {name} AND password = {password}',
-            params
-        );
+        var query = SC.Query.create({
+            conditions: "name = {name} AND password = {password}",
+            recordType: Gighub.User,
+            parameters: params
+        });
 
         var results = Gighub.store.find(query);
         var content = results.objectAt(0);
@@ -31,6 +31,21 @@ Gighub.userController = SC.ObjectController.create(
         }
 
         this.set('content', content);
+        return YES;
+    },
+
+    does_user_exist: function(params) {
+        var query = SC.Query.create({
+            conditions: "name = {name}",
+            recordType: Gighub.User,
+            parameters: params
+        });
+
+        var results = Gighub.store.find(query);
+        var content = results.objectAt(0);
+        if (content == null) {
+            return NO;
+        }
         return YES;
     },
 
