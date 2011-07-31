@@ -1,6 +1,21 @@
 Documenting the development of Gighub
 
 Next steps:
+- A user can create a new account
+    - In SproutCore: query the server if the user name exists
+      if it exists, let the user know (as soon as possible).
+- A user can attempt to login and get denied
+- A user can attempt to login and succeed
+- When a user creates a new account, they are taken to their user page
+
+- create an unencrypted user login
+    Query the server with the username and password
+    Server responds with the user, if exists and password is correct
+    The user is logged in.
+
+- create an SSL encrypted user login
+    Need to purchase SSL cert?
+
 - Rate by clicking stars
 - Stars change color when hovering over
 - Create VenueReview model
