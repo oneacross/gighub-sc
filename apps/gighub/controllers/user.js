@@ -23,6 +23,7 @@ Gighub.userController = SC.ObjectController.create(
             recordType: Gighub.User,
             parameters: params
         });
+        query.set('query_type') = 2;
 
         var results = Gighub.store.find(query);
         var content = results.objectAt(0);
@@ -40,6 +41,7 @@ Gighub.userController = SC.ObjectController.create(
             recordType: Gighub.User,
             parameters: params
         });
+        query.set('query_type') = 1;
 
         var results = Gighub.store.find(query);
         var content = results.objectAt(0);
