@@ -10,26 +10,17 @@ Gighub.User.FIXTURES = [
 
     {
         guid: 1,
-        name: 'nickt',
-        password: 'owego',
-        primary_ident_type: 'band',
-        primary_ident_guid: 1
+        name: 'nickt'
     },
 
     {
         guid: 2,
-        name: 'giovanni',
-        password: 'pop',
-        primary_ident_type: 'band',
-        primary_ident_guid: 2
+        name: 'giovanni'
     },
 
     {
         guid: 3,
-        name: 'utah',
-        password: 'sf',
-        primary_ident_type: 'venue',
-        primary_ident_guid: 1
+        name: 'utah'
     },
 
 ];

@@ -18,13 +18,15 @@ Gighub.UserDataSource = SC.DataSource.extend(
         // 2. is this name and password combo correct?
         //    -> want the user object as a response (without password)
         if (query.get('query_type') == 1) {
-            SC.Request.getUrl('/users').header({'Accept': 'application/json'}).json()
+            SC.Request.getUrl('/users?name=' + query.get('name'))
+                .header({'Accept': 'application/json'}).json()
                 .notify(this, 'didFetchUser', store, query)
                 .send();
             return YES;
         }
         else if (query.get('query_type') == 2) {
-            SC.Request.getUrl('/users').header({'Accept': 'application/json'}).json()
+            SC.Request.getUrl('/users')
+                .header({'Accept': 'application/json'}).json()
                 .notify(this, 'didFetchUser', store, query)
                 .send();
             return YES;
@@ -51,24 +53,25 @@ Gighub.UserDataSource = SC.DataSource.extend(
       return NO ; // return YES if you handled the storeKey
     },
     
-    createRecord: function(store, storeKey) {
+    createRecord: function(store, storeHash) {
       
-      SC.Request.postUrl('/users').header({'Accept': 'application/json'}).json()
-          .notify(this, 'didCreateUser', store, storeKey)
-          .send(store.readDataHash(storeKey));
+      SC.Request.postUrl('/users')
+          .header({'Content-Type': 'application/json'}).json()
+          .notify(this, 'didCreateUser', store, storeHash)
+          .send(store.readDataHash(storeHash));
       
       return YES;
     },
 
-    didCreateUser: function(response, store, storeKey) {
-      if (SC.ok(response)) {
-        var parser = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
-        var url = parser.exec(response.header('Location'))[8];
-        store.dataSourceDidComplete(storeKey, null, url);
-      }
-      else {
-        store.dataSourceDidError(storeKey,response);
-      }
+    didCreateUser: function(response, store, storeHash) {
+        if (SC.ok(response)) {
+            var parser = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
+            var url = parser.exec(response.header('Location'))[8];
+            store.dataSourceDidComplete(storeHash, null, url);
+        }
+        else {
+            store.dataSourceDidError(storeHash,response);
+        }
     },
     
     updateRecord: function(store, storeKey) {

@@ -12,9 +12,6 @@
 Gighub.User = SC.Record.extend(
 /** @scope Gighub.User.prototype */ {
 
-    name: SC.Record.attr(String),
-    password: SC.Record.attr(String),
-    primary_ident_type: SC.Record.attr(String),
-    primary_ident_guid: SC.Record.attr(Number)
+    name: SC.Record.attr(String)
 
 });

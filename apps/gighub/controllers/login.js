@@ -39,24 +39,11 @@ Gighub.loginController = SC.ObjectController.create(
             // Start login
             this.set('isLoggingIn', YES);
 
-            // Simulate an HTTP call
-            // Retrieve the user
-            // Errors:
-            // The user name does not exist
-            // The password is not correct
-            var success = Gighub.userController.lookup({
-                name: username,
-                password: password
-            });
-
-            var url = '/gighub/en/current/source/resources/main_page.js';
-            if (!success) {
-                url = '/gighub/en/current/source/resources/bad_url.js';
-            }
-
-            SC.Request.getUrl(url)
+            // Send the login request to the server
+            SC.Request.postUrl('/sessions')
+                .header({'Content-Type': 'application/json'}).json()
                 .notify(this, 'endLogin')
-                .send();
+                .send({name: username, password: password});
 
             return YES;
         }
@@ -76,9 +63,22 @@ Gighub.loginController = SC.ObjectController.create(
 
             // Check status
             SC.Logger.info('HTTP status code: ' + response.status);
+            
             if (!SC.ok(response)) {
+                throw SC.Error.desc('bad status from server');
+            }
+
+            // get the message from the server
+            var message = response.body().message;
+
+            if (message == 'Logged in') {
+                SC.Logger.info('Logged in!');
+            }
+            else if (message == 'Invalid name or password') {
                 throw SC.Error.desc('Invalid username or password');
             }
+            
+            var username = this.get('username');
 
             // Clear data
             this.set('username', '');
@@ -86,9 +86,10 @@ Gighub.loginController = SC.ObjectController.create(
             this.set('errorMessage', '');
 
             Gighub.userController.set('loggedIn', YES);
+            Gighub.userController.set('name', username);
 
             // Go to the user's profile
-            Gighub.userController.gotoPrimary();
+            SC.routes.set('location', 'user/' + username);
         }
         catch (err) {
             this.set('errorMessage', err.message);
@@ -96,11 +97,43 @@ Gighub.loginController = SC.ObjectController.create(
     },
 
     logout: function() {
-        Gighub.userController.set('loggedIn', NO);
-        // Go back to the main page
-        SC.routes.set('location', '');
+
+        // Send the logout request to the server
+        SC.Request.getUrl('/log_out')
+            .header({'Content-Type': 'application/json'}).json()
+            .notify(this, 'endLogout')
+            .send();
+
     },
 
+    endLogout: function(response) {
+        try {
+            // Check status
+            SC.Logger.info('HTTP status code: ' + response.status);
+            
+            if (!SC.ok(response)) {
+                throw SC.Error.desc('bad status from server');
+            }
+
+            // get the message from the server
+            var message = response.body().message;
+
+            if (message == 'Logged out') {
+                SC.Logger.info('Logged out!');
+            }
+            else {
+                throw SC.Error.desc('Server unable to logout, please retry');
+            }
+            
+            Gighub.userController.set('loggedIn', NO);
+
+            // Go back to the main page
+            SC.routes.set('location', '');
+        }
+        catch (err) {
+            this.set('errorMessage', err.message);
+        }
+    },
 
     beginSignup: function() {
         try {
@@ -114,23 +147,11 @@ Gighub.loginController = SC.ObjectController.create(
                 throw SC.Error.desc('Password is required');
             }
 
-            var user_exists = Gighub.userController.does_user_exist({
-                name: username
-            });
-
-            if (user_exists) {
-                throw SC.Error.desc('Username already taken');
-            }
-
-            // Create new user
-            var user = Gighub.store.createRecord(Gighub.User, {
-                name: this.get('signup_username'),
-                password: this.get('signup_password')
-            });
-
-            // Save to backend
-            user.commitRecord();
-            SC.routes.set('location', 'user/' + this.get('signup_username'));
+            // Ask the server to create a new user
+            SC.Request.postUrl('/users')
+                .header({'Content-Type': 'application/json'}).json()
+                .notify(this, 'endSignup', username)
+                .send({user: {name: username, password: password}});
 
             return YES;
         }
@@ -141,6 +162,44 @@ Gighub.loginController = SC.ObjectController.create(
             this.set('isLoggingIn', NO);
 
             return NO;
+        }
+    },
+
+    endSignup: function(response, username) {
+        try {
+            // Check status
+            SC.Logger.info('HTTP status code: ' + response.status);
+            
+            if (!SC.ok(response)) {
+                throw SC.Error.desc('bad status from server');
+            }
+
+            // get the message from the server
+            var message = response.body().message;
+
+            if (message == 'User created') {
+                SC.Logger.info('User created!');
+            }
+            else if (message == 'User name taken') {
+                throw SC.Error.desc('User name taken!');
+            }
+            else if (message == 'User not created') {
+                throw SC.Error.desc('User not created, please try again');
+            }
+
+            // Clear data
+            this.set('signup_username', '');
+            this.set('signup_password', '');
+            this.set('signup_error_message', '');
+            
+            Gighub.userController.set('loggedIn', YES);
+            Gighub.userController.set('name', username);
+
+            // Go to the user's profile
+            SC.routes.set('location', 'user/' + username);
+        }
+        catch (err) {
+            this.set('errorMessage', err.message);
         }
     }
 

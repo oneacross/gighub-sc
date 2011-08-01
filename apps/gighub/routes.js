@@ -69,7 +69,7 @@ Gighub.routes = SC.Object.create({
 
     user: function(params) {
         var name = params.userName;
-        Gighub.userController.show(name);
+        Gighub.userController.set('name', name);
         this.gotoRoute({
             pageName: 'userPage',
             paneName: 'mainPane'

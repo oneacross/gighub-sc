@@ -17,17 +17,10 @@ Gighub.UserView = SC.View.extend(
 
         layout: { top: 0 },
 
-        contentDisplayProperties: 'name'.w(),
-        contentBinding: 'Gighub.userController.content',
-
         render: function(context, firstTime) {
-            var name = '';
-            var content = this.get('content');
 
-            if (content != null) {
-                name = content.get('name');
-            }
-            else {
+            var name = Gighub.userController.get('name');
+            if (name == null) {
                 name = 'user does not exist';
             }
 
