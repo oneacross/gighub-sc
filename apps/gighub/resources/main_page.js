@@ -88,7 +88,11 @@ Gighub.venuesPage = SC.Page.design({
 Gighub.userPage = SC.Page.design({
     mainPane: SC.MainPane.design({
         childViews: 'topView middleView'.w(),
+
         topView: Gighub.TopView,
-        middleView: Gighub.UserView
+        middleView: SC.LabelView.design({
+            layout: { top: 50 },
+            valueBinding: 'Gighub.userController.name'
+        })
     })
 });
