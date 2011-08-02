@@ -78,7 +78,7 @@ Gighub.loginController = SC.ObjectController.create(
                 throw SC.Error.desc('Invalid username or password');
             }
             
-            var username = this.get('username');
+            var user = SC.Object.create(response.body().user);
 
             // Clear data
             this.set('username', '');
@@ -86,10 +86,10 @@ Gighub.loginController = SC.ObjectController.create(
             this.set('errorMessage', '');
 
             Gighub.userController.set('loggedIn', YES);
-            Gighub.userController.set('name', username);
+            Gighub.userController.set('content', user);
 
             // Go to the user's profile
-            SC.routes.set('location', 'user/' + username);
+            SC.routes.set('location', 'user/' + user.get('name'));
         }
         catch (err) {
             this.set('errorMessage', err.message);
@@ -150,7 +150,7 @@ Gighub.loginController = SC.ObjectController.create(
             // Ask the server to create a new user
             SC.Request.postUrl('/users')
                 .header({'Content-Type': 'application/json'}).json()
-                .notify(this, 'endSignup', username)
+                .notify(this, 'endSignup')
                 .send({user: {name: username, password: password}});
 
             return YES;
@@ -165,7 +165,7 @@ Gighub.loginController = SC.ObjectController.create(
         }
     },
 
-    endSignup: function(response, username) {
+    endSignup: function(response) {
         try {
             // Check status
             SC.Logger.info('HTTP status code: ' + response.status);
@@ -187,16 +187,18 @@ Gighub.loginController = SC.ObjectController.create(
                 throw SC.Error.desc('User not created, please try again');
             }
 
+            var user = SC.Object.create(response.body().user);
+
             // Clear data
             this.set('signup_username', '');
             this.set('signup_password', '');
             this.set('signup_error_message', '');
             
             Gighub.userController.set('loggedIn', YES);
-            Gighub.userController.set('name', username);
+            Gighub.userController.set('content', user);
 
             // Go to the user's profile
-            SC.routes.set('location', 'user/' + username);
+            SC.routes.set('location', 'user/' + user.get('name'));
         }
         catch (err) {
             this.set('errorMessage', err.message);

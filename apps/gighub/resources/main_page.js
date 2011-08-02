@@ -90,9 +90,28 @@ Gighub.userPage = SC.Page.design({
         childViews: 'topView middleView'.w(),
 
         topView: Gighub.TopView,
-        middleView: SC.LabelView.design({
+        middleView: SC.View.design({
             layout: { top: 50 },
-            valueBinding: 'Gighub.userController.name'
+            childViews: 'nameView noBandView signupBandView'.w(),
+
+            nameView: SC.LabelView.design({
+                layout: { top: 0 },
+                contentBinding: 'Gighub.userController.content',
+                contentValueKey: 'name',
+                controlSize: SC.LARGE_CONTROL_SIZE
+            }),
+
+            noBandView: SC.LabelView.design({
+                layout: { top: 30, left: 20 },
+                value: 'Are you in a band?'
+            }),
+
+            signupBandView: SC.ButtonView.design({
+                layout: { top: 30, left: 150, width: 150 },
+                title: 'Sign up your band!',
+                target: 'Gighub.bandsController',
+                action: 'signup_pane'
+            })
         })
     })
 });

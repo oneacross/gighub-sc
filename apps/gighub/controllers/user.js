@@ -11,7 +11,6 @@ Gighub.userController = SC.ObjectController.create(
 /** @scope Gighub.userController.prototype */ {
 
     loggedIn: NO,
-    name: '',
 
     loggedInDidChange: function() {
         SC.Logger.info('loggedIn changed to ' + this.loggedIn);
