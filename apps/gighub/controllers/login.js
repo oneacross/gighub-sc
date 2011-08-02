@@ -201,7 +201,7 @@ Gighub.loginController = SC.ObjectController.create(
             SC.routes.set('location', 'user/' + user.get('name'));
         }
         catch (err) {
-            this.set('errorMessage', err.message);
+            this.set('signup_error_message', err.message);
         }
     }
 
