@@ -14,6 +14,12 @@ Gighub.userController = SC.ObjectController.create(
 
     loggedInDidChange: function() {
         SC.Logger.info('loggedIn changed to ' + this.loggedIn);
-    }.observes('loggedIn')
+    }.observes('loggedIn'),
+
+    bands_did_changes: function() {
+        if (this.get('bands') != null) {
+            this.set('bands_string', this.get('bands').toString());
+        }
+    }.observes('bands')
 
 });
