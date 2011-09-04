@@ -36,8 +36,14 @@ Gighub.LoginView = SC.View.extend(
                     return !value;
                 }),
             
-            valueBinding: 'Gighub.loginController.username'
+            renderContext: function(tagNameOrElement) {
+                tagNameOrElement.getElementsByClassName('field')[0].setAttribute('validate', 'not_empty');
+                return SC.RenderContext(tagNameOrElement);
+            },
 
+            validator: SC.Validator.NotEmpty,
+
+            valueBinding: 'Gighub.loginController.username'
         })
     }),
 
