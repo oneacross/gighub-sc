@@ -40,6 +40,7 @@ Gighub.SignupView = SC.View.extend(
                     return !value;
                 }),
             
+            validator: SC.Validator.NotEmpty,
             valueBinding: 'Gighub.loginController.signup_username'
 
         })
@@ -65,6 +66,7 @@ Gighub.SignupView = SC.View.extend(
                     return !value;
                 }),
             
+            validator: SC.Validator.NotEmpty,
             valueBinding: 'Gighub.loginController.signup_email'
 
         })
@@ -90,6 +92,8 @@ Gighub.SignupView = SC.View.extend(
                 .transform(function(value, isForward) {
                     return !value;
                 }),
+
+            validator: SC.Validator.NotEmpty,
             valueBinding: 'Gighub.loginController.signup_password'
         })
     }),
@@ -103,9 +107,24 @@ Gighub.SignupView = SC.View.extend(
             .transform(function(value, isForward) {
                 return !value;
             }),
-        target: 'Gighub.loginController',
-        action: 'beginSignup'
+        action: 'validateForm'
     }),
+
+    validateForm: function() {
+        if (this.username.field.performValidateSubmit().isError) {
+            this.errorMessage.set('value', 'Username is required');
+            return;
+        }
+        if (this.email.field.performValidateSubmit().isError) {
+            this.errorMessage.set('value', 'email is required');
+            return;
+        }
+        if (this.password.field.performValidateSubmit().isError) {
+            this.errorMessage.set('value', 'password is required');
+            return;
+        }
+        Gighub.loginController.beginSignup();
+    },
 
     errorMessage: SC.LabelView.design({
         layout: { height: 40, width: 230, right: 120, bottom: 7 },

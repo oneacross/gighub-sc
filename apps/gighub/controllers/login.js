@@ -19,11 +19,6 @@ Gighub.loginController = SC.ObjectController.create(
     isLoggingIn: NO,
     onLoginGoToPagePaneName: 'mainPage.mainPane',
 
-    signup_username: '',
-    signup_email: '',
-    signup_password: '',
-    signup_error_message: '',
-
     beginLogin: function() {
         try {
             var username = this.get('username');
@@ -128,17 +123,15 @@ Gighub.loginController = SC.ObjectController.create(
         }
     },
 
+    signup_username: '',
+    signup_email: '',
+    signup_password: '',
+    signup_error_message: '',
+
     beginSignup: function() {
         try {
             var username = this.get('signup_username');
-            if (username == null || username == '') {
-                throw SC.Error.desc('Username is required');
-            }
-
             var password = this.get('signup_password');
-            if (password == null || password == '') {
-                throw SC.Error.desc('Password is required');
-            }
 
             // Ask the server to create a new user
             SC.Request.postUrl('/users')
