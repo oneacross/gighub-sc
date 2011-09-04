@@ -59,10 +59,7 @@ Gighub.loginController = SC.ObjectController.create(
             
             var user = SC.Object.create(response.body().user);
 
-            // Clear data
-            this.set('username', '');
-            this.set('password', '');
-            this.set('errorMessage', '');
+            this.clearLoginForm();
 
             Gighub.userController.set('loggedIn', YES);
             Gighub.userController.set('content', user);
@@ -75,6 +72,12 @@ Gighub.loginController = SC.ObjectController.create(
         }
     },
 
+    clearLoginForm: function() {
+        this.set('username', '');
+        this.set('password', '');
+        this.set('errorMessage', '');
+    },
+
     logout: function() {
 
         // Send the logout request to the server
@@ -82,7 +85,6 @@ Gighub.loginController = SC.ObjectController.create(
             .header({'Content-Type': 'application/json'}).json()
             .notify(this, 'endLogout')
             .send();
-
     },
 
     endLogout: function(response) {
@@ -160,10 +162,7 @@ Gighub.loginController = SC.ObjectController.create(
 
             var user = SC.Object.create(response.body().user);
 
-            // Clear data
-            this.set('signup_username', '');
-            this.set('signup_password', '');
-            this.set('signup_error_message', '');
+            this.clearSignupForm();
             
             Gighub.userController.set('loggedIn', YES);
             Gighub.userController.set('content', user);
@@ -174,6 +173,12 @@ Gighub.loginController = SC.ObjectController.create(
         catch (err) {
             this.set('signup_error_message', err.message);
         }
+    },
+
+    clearSignupForm: function() {
+        this.set('signup_username', '');
+        this.set('signup_password', '');
+        this.set('signup_error_message', '');
     }
 
 });
