@@ -34,14 +34,14 @@ Gighub.SignupView = SC.View.extend(
         field: SC.TextFieldView.design({
             layout: { width: 230, height: 22, right: 3, centerY: 0 },
 
-            isEnabledBinding: SC.Binding.from('Gighub.loginController.isLoggingIn')
+            isEnabledBinding: SC.Binding.from('Gighub.userController.isSigningUp')
                 .bool()
                 .transform(function(value, isForward) {
                     return !value;
                 }),
             
             validator: SC.Validator.NotEmpty,
-            valueBinding: 'Gighub.loginController.signup_username'
+            valueBinding: 'Gighub.userController.signup_username'
 
         })
     }),
@@ -60,14 +60,14 @@ Gighub.SignupView = SC.View.extend(
         field: SC.TextFieldView.design({
             layout: { width: 230, height: 22, right: 3, centerY: 0 },
 
-            isEnabledBinding: SC.Binding.from('Gighub.loginController.isLoggingIn')
+            isEnabledBinding: SC.Binding.from('Gighub.userController.isSigningUp')
                 .bool()
                 .transform(function(value, isForward) {
                     return !value;
                 }),
             
             validator: SC.Validator.NotEmpty,
-            valueBinding: 'Gighub.loginController.signup_email'
+            valueBinding: 'Gighub.userController.signup_email'
 
         })
     }),
@@ -87,14 +87,14 @@ Gighub.SignupView = SC.View.extend(
             layout: { width: 230, height: 22, right: 3, centerY: 0 },
 
             isPassword: YES,
-            isEnabledBinding: SC.Binding.from('Gighub.loginController.isLoggingIn')
+            isEnabledBinding: SC.Binding.from('Gighub.userController.isSigningUp')
                 .bool()
                 .transform(function(value, isForward) {
                     return !value;
                 }),
 
             validator: SC.Validator.NotEmpty,
-            valueBinding: 'Gighub.loginController.signup_password'
+            valueBinding: 'Gighub.userController.signup_password'
         })
     }),
 
@@ -102,7 +102,7 @@ Gighub.SignupView = SC.View.extend(
         layout: { height: 24, width: 80, bottom: 17, right: 17 },
         title: 'Sign up',
         isDefault: YES,
-        isEnabledBinding: SC.Binding.from('Gighub.loginController.isLoggingIn')
+        isEnabledBinding: SC.Binding.from('Gighub.userController.isSigningUp')
             .bool()
             .transform(function(value, isForward) {
                 return !value;
@@ -123,12 +123,12 @@ Gighub.SignupView = SC.View.extend(
             this.errorMessage.set('value', 'password is required');
             return;
         }
-        Gighub.loginController.beginSignup();
+        Gighub.userController.beginSignup();
     },
 
     errorMessage: SC.LabelView.design({
         layout: { height: 40, width: 230, right: 120, bottom: 7 },
         classNames: ['error-message'],
-        valueBinding: 'Gighub.loginController.signup_error_message'
+        valueBinding: 'Gighub.userController.signup_error_message'
     })
 });
