@@ -125,7 +125,7 @@ Gighub.userPage = SC.Page.design({
                 buttonView: SC.ButtonView.design({
                     layout: { top: 0, left: 150, width: 150 },
                     title: 'Sign up your band!',
-                    target: 'Gighub.bandsController',
+                    target: 'Gighub.bandController',
                     action: 'signup_pane'
                 })
             }),
