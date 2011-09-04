@@ -20,29 +20,20 @@ Gighub.loginController = SC.ObjectController.create(
     onLoginGoToPagePaneName: 'mainPage.mainPane',
 
     beginLogin: function() {
-        try {
-            var username = this.get('username');
-            var password = this.get('password');
+        this.set('isLoggingIn', YES);
 
-            // Start login
-            this.set('isLoggingIn', YES);
-
-            // Send the login request to the server
-            SC.Request.postUrl('/sessions')
-                .header({'Content-Type': 'application/json'}).json()
-                .notify(this, 'endLogin')
-                .send({name: username, password: password});
-
-            return YES;
+        var sendObj = {
+            name: this.get('username'),
+            password: this.get('password')
         }
-        catch (err) {
-            this.set('errorMessage', err.message);
 
-            // Finish login process
-            this.set('isLoggingIn', NO);
+        // Send the login request to the server
+        SC.Request.postUrl('/sessions')
+            .header({'Content-Type': 'application/json'}).json()
+            .notify(this, 'endLogin')
+            .send(sendObj);
 
-            return NO;
-        }
+        return YES;
     },
 
     endLogin: function(response) {
@@ -129,26 +120,20 @@ Gighub.loginController = SC.ObjectController.create(
     signup_error_message: '',
 
     beginSignup: function() {
-        try {
-            var username = this.get('signup_username');
-            var password = this.get('signup_password');
-
-            // Ask the server to create a new user
-            SC.Request.postUrl('/users')
-                .header({'Content-Type': 'application/json'}).json()
-                .notify(this, 'endSignup')
-                .send({user: {name: username, password: password}});
-
-            return YES;
+        var sendObj = {
+            user: {
+                name: this.get('signup_username'),
+                password: this.get('signup_password')
+            }
         }
-        catch (err) {
-            this.set('signup_error_message', err.message);
 
-            // Finish login process
-            this.set('isLoggingIn', NO);
+        // Ask the server to create a new user
+        SC.Request.postUrl('/users')
+            .header({'Content-Type': 'application/json'}).json()
+            .notify(this, 'endSignup')
+            .send(sendObj);
 
-            return NO;
-        }
+        return YES;
     },
 
     endSignup: function(response) {
