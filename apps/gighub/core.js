@@ -13,5 +13,5 @@ Gighub = SC.Application.create(
     NAMESPACE: 'Gighub',
     VERSION: '0.1.0',
 
-    store: SC.Store.create().from('Gighub.UserDataSource')
+    store: SC.Store.create().from('Gighub.DataSource')
 });

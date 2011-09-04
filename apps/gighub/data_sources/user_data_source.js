@@ -7,7 +7,7 @@
 /** @class
   @extends SC.DataSource
 */
-Gighub.UserDataSource = SC.DataSource.extend(
+Gighub.DataSource = SC.DataSource.extend(
 /** @scope Gighub.UserDataSource.prototype */ {
 
     // Query support
@@ -17,21 +17,36 @@ Gighub.UserDataSource = SC.DataSource.extend(
         //    -> only want a boolean response
         // 2. is this name and password combo correct?
         //    -> want the user object as a response (without password)
-        if (query.get('query_type') == 1) {
-            SC.Request.getUrl('/users?name=' + query.get('name'))
-                .header({'Accept': 'application/json'}).json()
-                .notify(this, 'didFetchUser', store, query)
-                .send();
-            return YES;
+        //if (query.get('query_type') == 1) {
+        //    SC.Request.getUrl('/users?name=' + query.get('name'))
+        //        .header({'Accept': 'application/json'}).json()
+        //        .notify(this, 'didFetchUser', store, query)
+        //        .send();
+        //    return YES;
+        //}
+        //else if (query.get('query_type') == 2) {
+        //    SC.Request.getUrl('/users')
+        //        .header({'Accept': 'application/json'}).json()
+        //        .notify(this, 'didFetchUser', store, query)
+        //        .send();
+        //    return YES;
+        //}
+
+        SC.Request.getUrl('/bands')
+            .header({'Accept': 'application/json'}).json()
+            .notify(this, 'didFetchBands', store, query)
+            .send();
+        return YES;
+    },
+
+    didFetchBands: function(response, store, query) {
+        if (SC.ok(response)) {
+            store.loadRecords(Gighub.Band, response.body());
+            store.dataSourceDidFetchQuery(query);
         }
-        else if (query.get('query_type') == 2) {
-            SC.Request.getUrl('/users')
-                .header({'Accept': 'application/json'}).json()
-                .notify(this, 'didFetchUser', store, query)
-                .send();
-            return YES;
+        else {
+            store.dataSourceDidErrorQuery(query, response);
         }
-        return NO;
     },
 
     didFetchUser: function(response, store, query) {
