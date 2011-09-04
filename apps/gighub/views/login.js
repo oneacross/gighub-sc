@@ -36,13 +36,7 @@ Gighub.LoginView = SC.View.extend(
                     return !value;
                 }),
             
-            renderContext: function(tagNameOrElement) {
-                tagNameOrElement.getElementsByClassName('field')[0].setAttribute('validate', 'not_empty');
-                return SC.RenderContext(tagNameOrElement);
-            },
-
             validator: SC.Validator.NotEmpty,
-
             valueBinding: 'Gighub.loginController.username'
         })
     }),
@@ -67,6 +61,8 @@ Gighub.LoginView = SC.View.extend(
                 .transform(function(value, isForward) {
                     return !value;
                 }),
+
+            validator: SC.Validator.NotEmpty,
             valueBinding: 'Gighub.loginController.password'
         })
     }),
@@ -80,9 +76,21 @@ Gighub.LoginView = SC.View.extend(
             .transform(function(value, isForward) {
                 return !value;
             }),
-        target: 'Gighub.loginController',
-        action: 'beginLogin'
+
+        action: 'validateForm'
     }),
+
+    validateForm: function() {
+        if (this.username.field.performValidateSubmit().isError) {
+            this.errorMessage.set('value', 'Username is required');
+            return;
+        }
+        if (this.password.field.performValidateSubmit().isError) {
+            this.errorMessage.set('value', 'Password is required');
+            return;
+        }
+        Gighub.loginController.beginLogin();
+    },
 
     errorMessage: SC.LabelView.design({
         layout: { height: 40, width: 230, right: 120, bottom: 7 },

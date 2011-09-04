@@ -27,14 +27,7 @@ Gighub.loginController = SC.ObjectController.create(
     beginLogin: function() {
         try {
             var username = this.get('username');
-            if (username == null || username == '') {
-                throw SC.Error.desc('Username is required');
-            }
-
             var password = this.get('password');
-            if (password == null || password == '') {
-                throw SC.Error.desc('Password is required');
-            }
 
             // Start login
             this.set('isLoggingIn', YES);
