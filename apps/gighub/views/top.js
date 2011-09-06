@@ -37,14 +37,12 @@ Gighub.TopView = SC.ToolbarView.extend(
         action: 'show_all'
     }),
 
-    nameView: SC.LabelView.design({
-        layout: { centerY: 0, height: 24, right: 100, width: 100 },
-        controlSize: SC.LARGE_CONTROL_SIZE,
-        fontWeight: SC.BOLD_WEIGHT,
-
-        displayProperties: ['value'],
-        valueBinding: 'Gighub.userController.name',
+    nameView: SC.ButtonView.design({
+        layout: { centerY: 0, height: 24, right: 112, width: 100 },
+        titleBinding: 'Gighub.userController.name',
         isVisibleBinding: 'Gighub.userController.loggedIn',
+        target: 'Gighub.routes',
+        action: 'user'
     }),
 
     logoutButton: SC.ButtonView.design({
