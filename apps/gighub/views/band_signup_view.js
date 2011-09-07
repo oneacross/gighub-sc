@@ -44,7 +44,8 @@ Gighub.BandSignupPage = SC.Page.design({
                         }),
                     
                     validator: SC.Validator.NotEmpty,
-                    valueBinding: 'Gighub.bandController.name'
+                    contentValueKey: 'name',
+                    contentBinding: 'Gighub.bandController.content'
 
                 })
             }),
@@ -69,8 +70,8 @@ Gighub.BandSignupPage = SC.Page.design({
                             return !value;
                         }),
                     
-                    valueBinding: 'Gighub.bandController.location'
-
+                    contentValueKey: 'location',
+                    contentBinding: 'Gighub.bandController.content'
                 })
             }),
 
@@ -94,8 +95,8 @@ Gighub.BandSignupPage = SC.Page.design({
                             return !value;
                         }),
 
-                    validator: SC.Validator.NotEmpty,
-                    valueBinding: 'Gighub.bandController.picture'
+                    contentValueKey: 'picture',
+                    contentBinding: 'Gighub.bandController.content'
                 })
             }),
 

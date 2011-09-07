@@ -34,70 +34,18 @@ Gighub.bandController = SC.ObjectController.create({
         this.set('content', result);
     },
 
-    name: '',
-    location: '',
-    picture: '',
     error_message: '',
-    isSigningUp: NO,
 
     beginSignup: function() {
-        var sendObj = {
-            band: {
-                name: this.get('name'),
-                location: this.get('location'),
-                picture: this.get('picture')
-            }
-        }
-
-        // Ask the server to create a new band
-        SC.Request.postUrl('/bands')
-            .header({'Content-Type': 'application/json'}).json()
-            .notify(this, 'endSignup')
-            .send(sendObj);
-
+        Gighub.store.commitRecords();
+        Gighub.getPath('BandSignupPage.mainPane').remove();
         return YES;
     },
 
-    endSignup: function(response) {
-        try {
-            // Check status
-            if (!SC.ok(response)) {
-                throw SC.Error.desc('bad status ' + response.status + ' from server');
-            }
-
-            // get the message from the server
-            var message = response.body().message;
-
-            if (message == 'Band created') {
-                SC.Logger.info('Band created!');
-            }
-            else if (message == 'Band name taken') {
-                throw SC.Error.desc('Band name taken!');
-            }
-            else if (message == 'Band not created') {
-                throw SC.Error.desc('Band not created, please try again');
-            }
-
-            var band = SC.Object.create(response.body().band);
-
-            this.clearSignupForm();
-            
-            this.set('content', band);
-            Gighub.getPath('BandSignupPage.mainPane').remove();
-        }
-        catch (err) {
-            this.set('error_message', err.message);
-        }
-    },
-
-    clearSignupForm: function() {
-        this.set('name', '');
-        this.set('location', '');
-        this.set('error_message', '');
-    },
-
     signup_pane: function() {
+        this.set('content', Gighub.store.createRecord(Gighub.Band, {}));
         Gighub.getPath('BandSignupPage.mainPane').append();
+        return YES;
     }
 
 });
