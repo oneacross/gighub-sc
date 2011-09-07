@@ -61,10 +61,8 @@ Gighub.bandController = SC.ObjectController.create({
     endSignup: function(response) {
         try {
             // Check status
-            SC.Logger.info('HTTP status code: ' + response.status);
-            
             if (!SC.ok(response)) {
-                throw SC.Error.desc('bad status from server');
+                throw SC.Error.desc('bad status ' + response.status + ' from server');
             }
 
             // get the message from the server
