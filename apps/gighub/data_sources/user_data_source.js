@@ -37,24 +37,26 @@ Gighub.DataSource = SC.DataSource.extend(
 
     createRecord: function(store, storeKey, params) {
 
-        // This currently only works for bands
         var record = store.materializeRecord(storeKey);
-        var sendObj = {
-            band: {
-                name: record.get('name'),
-                location: record.get('location'),
-                picture: record.get('picture')
-            }
-        };
 
-        // Ask the server to create a new band
-        SC.Request.postUrl('/bands')
-            .header({'Content-Type': 'application/json'}).json()
-            .notify(this, 'endSignup')
-            .send(sendObj);
+        if (record.instanceOf(Gighub.Band)) {
+            var sendObj = {
+                band: {
+                    name: record.get('name'),
+                    location: record.get('location'),
+                    picture: record.get('picture')
+                }
+            };
+
+            // Ask the server to create a new band
+            SC.Request.postUrl('/bands')
+                .header({'Content-Type': 'application/json'}).json()
+                .notify(this, 'end_band_signup')
+                .send(sendObj);
+        }
     },
 
-    endSignup: function(response) {
+    end_band_signup: function(response) {
         try {
             // Check status
             if (!SC.ok(response)) {
