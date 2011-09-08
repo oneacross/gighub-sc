@@ -79,6 +79,35 @@ Gighub.DataSource = SC.DataSource.extend(
         catch (err) {
             Gighub.bandController.set('error_message', err.message);
         }
+    },
+
+    destroyRecord: function(store, storeKey, params) {
+
+        var record = store.materializeRecord(storeKey);
+
+        if (record.instanceOf(Gighub.User)) {
+            SC.Request.deleteUrl('/users/' + record.id())
+                .notify(this, 'end_destroy_user');
+        }
+    },
+
+    end_destroy_user: function(response) {
+        try {
+            // Check status
+            if (!SC.ok(response)) {
+                throw SC.Error.desc('bad status ' + response.status + ' from server');
+            }
+
+            // get the message from the server
+            var message = response.body().message;
+
+            if (message == 'User destroyed') {
+                SC.Logger.info('User is destroyed!');
+            }
+        }
+        catch (err) {
+            Gighub.userController.set('signup_error_message', err.message);
+        }
     }
     
 });
