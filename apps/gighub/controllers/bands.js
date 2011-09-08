@@ -29,11 +29,6 @@ Gighub.bandController = SC.ObjectController.create({
         this.set('content', results.objectAt(0));
     },
 
-    show_guid: function(guid) {
-        var result = Gighub.store.find(Gighub.Band, guid);
-        this.set('content', result);
-    },
-
     error_message: '',
 
     beginSignup: function() {

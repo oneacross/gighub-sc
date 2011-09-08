@@ -26,10 +26,5 @@ Gighub.venueController = SC.ObjectController.create(
 
         var results = Gighub.store.find(query);
         this.set('content', results.objectAt(0));
-    },
-
-    show_guid: function(guid) {
-        var result = Gighub.store.find(Gighub.Venue, guid);
-        this.set('content', result);
     }
 });
