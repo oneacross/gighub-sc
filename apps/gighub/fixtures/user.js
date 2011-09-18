@@ -10,17 +10,20 @@ Gighub.User.FIXTURES = [
 
     {
         guid: 1,
-        name: 'nickt'
+        name: 'nickt',
+        bands: [1]
     },
 
     {
         guid: 2,
-        name: 'giovanni'
+        name: 'giovanni',
+        bands: [2]
     },
 
     {
         guid: 3,
-        name: 'utah'
+        name: 'popular',
+        bands: [1, 2, 3]
     },
 
 ];
