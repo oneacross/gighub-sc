@@ -1,0 +1,14 @@
+Gighub development policy:
+
+1 => Develop and test Gighub sproutcore app with fixtures.
+2 => Change store to be created from DataSource.
+3 => Build and copy app to Rails repo.
+3 => Any required Rails changes?
+        No => Goto 4.
+        Yes => Develop and test in Rails environment.
+4 => Push to production!
+
+Note: If debugging Rails, Sproutcore communication,
+      use a script to build and copy app to Rails.
+      Ok to have longer latency between integration tests.
+      Don't use proxy, because you will have to keep switching.
