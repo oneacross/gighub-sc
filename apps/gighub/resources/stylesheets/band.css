@@ -1,0 +1,22 @@
+div.band-name {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    font-size: 30px;
+}
+
+div.band-location {
+    position: absolute;
+    left: 30px;
+    top: 100px;
+    font-style: italic;
+    font-size: 20px;
+}
+
+a.band-website {
+    position: absolute;
+    left: 30px;
+    top: 150px;
+    font-style: italic;
+    font-size: 20px;
+}
