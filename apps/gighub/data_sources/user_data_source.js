@@ -13,11 +13,17 @@ Gighub.DataSource = SC.DataSource.extend(
     // Query support
     fetch: function(store, query) {
 
-        SC.Request.getUrl('/bands')
-            .header({'Accept': 'application/json'}).json()
-            .notify(this, 'didFetchBands', store, query)
-            .send();
-        return YES;
+        if (query.containsRecordTypes([Gighub.Band])) {
+            SC.Request.getUrl('/bands')
+                .header({'Accept': 'application/json'}).json()
+                .notify(this, 'didFetchBands', store, query)
+                .send();
+            return YES;
+        }
+        else if (query.containsRecordTypes([Gighub.User])) {
+            SC.Logger.info('No fetch functionality for User');
+        }
+        return NO;
     },
 
     didFetchBands: function(response, store, query) {
