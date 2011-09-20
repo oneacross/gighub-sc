@@ -2,16 +2,13 @@
 // Project:   Gighub.User
 // Copyright: ©2011 Matt Mendell
 // ==========================================================================
-/*globals Gighub */
 
-/** @class
+Gighub.User = SC.Record.extend({
 
-  @extends SC.Record
-  @version 0.1
-*/
-Gighub.User = SC.Record.extend(
-/** @scope Gighub.User.prototype */ {
-
-    name: SC.Record.attr(String)
+    name: SC.Record.attr(String),
+    bands: SC.Record.toMany(
+        'Gighub.Band',
+        { isMaster: YES, inverse: 'users' }
+    )
 
 });

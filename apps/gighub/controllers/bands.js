@@ -11,6 +11,9 @@ Gighub.bandsController = SC.ArrayController.create(
 /** @scope Gighub.bandsController.prototype */ {
 
     show_all: function() {
+        SC.Logger.info('showing all bands');
+        var bands = Gighub.store.find(Gighub.Band);
+        Gighub.bandsController.set('content', bands);
         SC.routes.set('location', 'bands');
     }
 

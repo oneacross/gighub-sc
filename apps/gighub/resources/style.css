@@ -1,32 +1,3 @@
-.stretch {
-    width: 100%;
-    height: 100%;
-}
-
-div.b-pic {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 100px;
-}
-
-div.b-name {
-    position: absolute;
-    font-size: 30px;
-    top: 10px;
-    left: 110px;
-    height: 70%;
-}
-
-div.b-location {
-    font-style: italic;
-    position: absolute;
-    bottom: 0;
-    left: 270px;
-    height: 30%;
-}
-
 .hover {
     background: #fff8dc;
 }

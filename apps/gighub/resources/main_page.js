@@ -90,74 +90,24 @@ Gighub.userPage = SC.Page.design({
         childViews: 'topView middleView'.w(),
 
         topView: Gighub.TopView,
-        middleView: SC.View.design({
-            layout: { top: 50 },
-            childViews: 'nameView noBandView bandView'.w(),
+        middleView: SC.TemplateView.design({
+            layout: { top: 200 },
 
-            nameView: SC.LabelView.design({
-                layout: { top: 0 },
-                contentBinding: 'Gighub.userController.content',
-                contentValueKey: 'name',
-                controlSize: SC.LARGE_CONTROL_SIZE
-            }),
+            templateName: 'user',
+            nameBinding: 'Gighub.userController.name',
+            lengthBinding: 'Gighub.bandsController.length',
+            noBands: function() {
+                SC.Logger.info('length is ' + this.get('length'));
+                return this.get('length') === 0;
+            }.property('length'),
 
-            noBandView: SC.View.design({
-
-                layout: { top: 30 },
-                childViews: 'labelView buttonView'.w(),
-
-                bandsBinding: 'Gighub.userController*content.bands',
-
-                bands_did_change: function() {
-                    if (this.get('bands') == null || this.get('bands').length == 0) {
-                        this.set('isVisible', YES);
-                    }
-                    else {
-                        this.set('isVisible', NO);
-                    }
-                }.observes('bands'),
-
-                labelView: SC.LabelView.design({
-                    layout: { top: 3, left: 20 },
-                    value: 'Are you in a band?'
-                }),
-
-                buttonView: SC.ButtonView.design({
-                    layout: { top: 0, left: 150, width: 150 },
-                    title: 'Sign up your band!',
-                    target: 'Gighub.bandController',
-                    action: 'signup_pane'
-                })
-            }),
-
-            bandView: SC.View.design({
-
-                isVisible: NO,
-                layout: { top: 30 },
-                childViews: 'labelView listView'.w(),
-
-                bandsBinding: 'Gighub.userController*content.bands',
-
-                bands_did_change: function() {
-                    if (this.get('bands') == null || this.get('bands').length == 0) {
-                        this.set('isVisible', NO);
-                    }
-                    else {
-                        this.set('isVisible', YES);
-                    }
-                }.observes('bands'),
-
-                labelView: SC.LabelView.design({
-                    layout: { top: 0, left: 20 },
-                    value: 'Behold, your bands!'
-                }),
-
-                listView: SC.LabelView.design({
-                    layout: { top: 20, left: 20, width: 150 },
-                    valueBinding: 'Gighub.userController.bands_string'
-                })
+            // Add this button the the noBands view
+            BandSignupButtonView: SC.ButtonView.design({
+                layout: { top: 0, left: 150, width: 150 },
+                title: 'Sign up your band!',
+                target: 'Gighub.bandController',
+                action: 'signup_pane'
             })
         })
-
     })
 });

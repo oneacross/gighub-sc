@@ -1,0 +1,11 @@
+<div>{{name}}</div>
+{{#if noBands}}
+    <h1>Are you in a band?</h1>
+    {{view BandSignupButtonView}}
+{{else}}
+    <h1>Your bands</h1>
+    {{#collection SC.TemplateCollectionView contentBinding="Gighub.bandsController"}}
+        <div>{{content.name}}</div>
+        <div>{{content.location}}</div>
+    {{/collection}}
+{{/if}}

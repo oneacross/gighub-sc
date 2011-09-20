@@ -21,7 +21,12 @@ Gighub.DataSource = SC.DataSource.extend(
             return YES;
         }
         else if (query.containsRecordTypes([Gighub.User])) {
-            SC.Logger.info('No fetch functionality for User');
+            // The login request to the server
+            SC.Request.postUrl('/sessions')
+                .header({'Content-Type': 'application/json'}).json()
+                .notify(this, 'endLogin')
+                .send(query.get('parameters'));
+            return YES;
         }
         return NO;
     },

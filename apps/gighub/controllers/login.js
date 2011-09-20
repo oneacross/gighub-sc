@@ -4,14 +4,7 @@
 // ==========================================================================
 /*globals Gighub */
 
-/** @class
-
-    Login controller.
-
-    @extends SC.Object
-*/
-Gighub.loginController = SC.ObjectController.create(
-/** @scope Gighub.loginController.prototype */ {
+Gighub.loginController = SC.ObjectController.create({
 
     username: '',
     password: '',
@@ -22,16 +15,13 @@ Gighub.loginController = SC.ObjectController.create(
     beginLogin: function() {
         this.set('isLoggingIn', YES);
 
-        var sendObj = {
-            name: this.get('username'),
-            password: this.get('password')
-        }
-
-        // Send the login request to the server
-        SC.Request.postUrl('/sessions')
-            .header({'Content-Type': 'application/json'}).json()
-            .notify(this, 'endLogin')
-            .send(sendObj);
+        Gighub.store.find(SC.Query.local(Gighub.User,
+            'name = {name}',
+            { name: this.get('username'),
+              password: this.get('password'),
+              isLogin: YES }
+        ));
+        this.clearLoginForm();
 
         return YES;
     },
@@ -61,9 +51,6 @@ Gighub.loginController = SC.ObjectController.create(
 
             this.clearLoginForm();
 
-            Gighub.userController.set('loggedIn', YES);
-            Gighub.userController.set('content', user);
-
             // Go to the user's profile
             SC.routes.set('location', 'user/' + user.get('name'));
         }
@@ -81,10 +68,14 @@ Gighub.loginController = SC.ObjectController.create(
     logout: function() {
 
         // Send the logout request to the server
-        SC.Request.getUrl('/log_out')
-            .header({'Content-Type': 'application/json'}).json()
-            .notify(this, 'endLogout')
-            .send();
+       // SC.Request.getUrl('/log_out')
+       //     .header({'Content-Type': 'application/json'}).json()
+       //     .notify(this, 'endLogout')
+       //     .send();
+
+        Gighub.store.find(SC.Query.local(Gighub.User, null,
+            { isLogout: YES }
+        ));
     },
 
     endLogout: function(response) {

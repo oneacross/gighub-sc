@@ -6,7 +6,6 @@
 
 Gighub.main = function main() {
 
-    // using fixture content for now
     var bands = Gighub.store.find(Gighub.Band);
     Gighub.bandsController.set('content', bands);
 
