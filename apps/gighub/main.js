@@ -17,7 +17,7 @@ Gighub.main = function main() {
     SC.routes.add('band/:bandName', Gighub.routes, 'band');
     SC.routes.add('venues', Gighub.routes, 'venues');
     SC.routes.add('venue/:venueName', Gighub.routes, 'venue');
-    SC.routes.add('user/:userName', Gighub.routes, 'user');
+    SC.routes.add('user/:userName', Gighub.userController, 'index');
     SC.routes.add('', Gighub.routes, 'root');
     //SC.routes.wantsHistory = YES;
 };

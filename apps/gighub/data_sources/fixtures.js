@@ -59,6 +59,9 @@ Gighub.FixturesDataSource = SC.FixturesDataSource.extend({
                 SC.routes.set('location', '');
                 return YES;
             }
+            else {
+                sc_super();
+            }
         }
         else {
             sc_super();

@@ -87,6 +87,34 @@ Gighub.userController = SC.ObjectController.create(
         this.set('signup_email', '');
         this.set('signup_password', '');
         this.set('signup_error_message', '');
+    },
+
+    index: function(params) {
+        var userName = params.userName;
+
+        var results = Gighub.store.find(SC.Query.local(
+            Gighub.User, 'name = {name}', {name: userName}
+        ));
+        var user;
+        if (results && results.length() == 1) {
+            user = results.objectAt(0);
+        }
+        else {
+            //SC.Logger.info("User does not exist");
+            Gighub.loginController.set('errorMessage', 'User does not exist');
+            //TODO: Goto error page
+            Gighub.routes.root();
+            return NO;
+        }
+
+        Gighub.userController.set('content', user);
+        Gighub.bandsController.set('content', user.get('bands'));
+
+        Gighub.routes.gotoRoute({
+            pageName: 'userPage',
+            paneName: 'mainPane'
+        });
+        return YES;
     }
 
 });

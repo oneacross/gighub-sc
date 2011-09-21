@@ -65,13 +65,6 @@ Gighub.routes = SC.Object.create({
             pageName: 'venuePage',
             paneName: 'mainPane'
         });
-    },
-
-    user: function(params) {
-        this.gotoRoute({
-            pageName: 'userPage',
-            paneName: 'mainPane'
-        });
     }
 
 });
